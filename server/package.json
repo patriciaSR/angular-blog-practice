@@ -1,0 +1,41 @@
+{
+    "name": "blog-practice",
+    "version": "1.0.0",
+    "main": "main.js",
+    "type": "module",
+    "directories": {
+        "test": "tests"
+    },
+    "dependencies": {
+        "bcrypt": "^3.0.7",
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "express": "4.17.1",
+        "fs": "0.0.1-security",
+        "https": "^1.0.0",
+        "jsonwebtoken": "^8.5.1",
+        "mongodb": "^3.4.1",
+        "passport": "^0.4.1",
+        "passport-http": "^0.3.0",
+        "passport-jwt": "^4.0.0"
+    },
+    "devDependencies": {
+        "@shelf/jest-mongodb": "^1.1.3",
+        "eslint": "^6.8.0",
+        "eslint-config-airbnb-base": "^14.0.0",
+        "eslint-plugin-import": "^2.20.0",
+        "jest": "^24.9.0",
+        "supertest": "^4.0.2"
+    },
+    "scripts": {
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
+        "test:coverage": "jest --collect-coverage",
+        "start": "node ./bin/app.js",
+        "start-fake": "node ./bin/fake-server.js"
+    },
+    "jest": {
+        "preset": "@shelf/jest-mongodb"
+    }
+}

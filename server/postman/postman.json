@@ -1,0 +1,655 @@
+{
+	"info": {
+		"_postman_id": "79475715-b3c7-401a-ba19-924b7855de54",
+		"name": "REST API Blog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "posts",
+			"item": [
+				{
+					"name": "get all posts GET",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/posts",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get post and comments by id GET",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/posts/{{POST_ID}}",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"posts",
+								"{{POST_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post newPost POST",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7630d6c1-e080-4a8f-adc4-b8f4517c0987",
+								"exec": [
+									"pm.environment.set(\"POST_ID\", pm.response.json()._id)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"newpost\",\n    \"content\": \"Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, minima perferendis delectus cum aliquid suscipit hic itaque, sed eligendi modi magnam quod sit nihil commodi provident et ipsa cumque eius!Lorem\",\n    \"tags\": [\"lala\", \"lalalal\", \"lalala\"],\n    \"categories\": [\"jasjas\"],\n    \"image\": \"https://img1.goodfon.com/wallpaper/nbig/1/b9/nastroeniya-makro-cvety-6881.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/posts",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put a post by id PUT",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"postCHAAAAAAAANGEEEEEE\",\n    \"content\": \"loremmmmmmmmm loreeeemmmmmmmmm chaaaaaaaaaaaaaaaaaaaaaaaaaaange\",\n    \"tags\": [\"lala\", \"lalalal\", \"lalala\"],\n    \"categories\": [\"jasjas\"],\n    \"image\": \"https://image.winudf.com/v2/image/Y29tLnBhc3RvcmUubmF0dXJlLmltYWdlcy53YWxscGFwZXJfc2NyZWVuXzBfN3VrNnE2djU/screen-0.jpg?fakeurl=1&type=.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/posts/{{POST_ID}}",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"posts",
+								"{{POST_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete a post and comments by ID DELETE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/plain",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/posts/{{POST_ID}}",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"posts",
+								"{{POST_ID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "posts collection endpoints",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "comments",
+			"item": [
+				{
+					"name": "post a comment POST",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fa4232c8-a369-44f7-8a2b-1a2605ef3d1f",
+								"exec": [
+									"pm.environment.set(\"COMMENT_ID\", pm.response.json()._id)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"content\": \"hola me llamo pluto!!!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/posts/{{POST_ID}}/comments",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"posts",
+								"{{POST_ID}}",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put a comment PUT",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"content\": \"hola me llamo pancho\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/posts/{{POST_ID}}/comments/{{COMMENT_ID}}",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"posts",
+								"{{POST_ID}}",
+								"comments",
+								"{{COMMENT_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete a comment DELETE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/posts/{{POST_ID}}/comments/{{COMMENT_ID}}",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"posts",
+								"{{POST_ID}}",
+								"comments",
+								"{{COMMENT_ID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "comments collection endpoints",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b592943c-d022-4971-9c34-fd8ae569b331",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "5eabcf66-cee9-452b-b451-c508f14e0ede",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "offensive-words",
+			"item": [
+				{
+					"name": "get all offensive words GET",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/offensive-words",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"offensive-words"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post an offensive word POST",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "89fb4e4a-63e7-4f1b-8d57-b9a82200b9ec",
+								"exec": [
+									"pm.environment.set(\"WORD_NAME\", pm.response.json().word)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"word\": \"TONTO\",\n\t\"level\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/offensive-words",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"offensive-words"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put an offensive word by name PUT",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"word\": \"tolai\",\n\t\"level\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/offensive-words/{{WORD_NAME}}",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"offensive-words",
+								"{{WORD_NAME}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete an offensive word by name DELETE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/offensive-words/{{WORD_NAME}}",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"offensive-words",
+								"{{WORD_NAME}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "offensive words collection endpoints",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "login jwt request POST",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2189450c-e2eb-493c-91af-c2ff5d3dfcc7",
+								"exec": [
+									"pm.environment.set(\"TOKEN\", pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{PASSWORD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{USERNAME}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/login",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signup newUser POST",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f30e1fb4-5934-4de9-bead-7c244b74a528",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstname\": \"mufasa\",\n    \"lastname\": \"lopez\",\n    \"username\": \"mufasa555\",\n    \"email\": \"mufasa@gmail.com\",\n    \"image\": \"https://i.pinimg.com/originals/a8/b3/d6/a8b3d61f1c857d80fff2096925198fce.jpg\",\n    \"password\": \"mufasa22\",\n    \"rol\": \"publisher\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/signup",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "users endoints",
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

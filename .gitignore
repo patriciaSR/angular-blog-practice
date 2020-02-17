@@ -1,0 +1,11 @@
+# VScode folder
+.vscode
+
+# Node Modules folder
+node_modules
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
+
+## server certificate files
