@@ -19,7 +19,7 @@
     <p *ngIf="form.get('password').hasError('required')">Debes poner una contraseña</p>
   </div>
 
-  <button (click)="onSubmit()" [disabled]="!form.valid">Send</button>
+  <button (click)="onSubmit($event)" [disabled]="!form.valid">Send</button>
 </form>
 
 {{ form.valid }}
