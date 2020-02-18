@@ -12,7 +12,6 @@ const ROUTES: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(ROUTES)
-  ],
-  exports: [HomeComponent]
+  ]
 })
 export class HomeModule { }

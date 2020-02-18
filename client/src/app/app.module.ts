@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { AuthModule } from './auth/auth.module';
+import { LoginComponent } from './auth/login/login.component';
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
 import { LayoutsModule } from './layouts/layouts.module';
 import { SimpleLayoutComponent } from './layouts/simple-layout/simple-layout.component';
@@ -12,7 +14,7 @@ const apiConfig = {
 };
 
 const ROUTES: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: '',
     component: AppLayoutComponent,
@@ -31,7 +33,7 @@ const ROUTES: Routes = [
     path: 'login',
     component: SimpleLayoutComponent,
     children: [
-      // { path: '', component: LoginComponent }
+      { path: '', component: LoginComponent }
     ]
   },
   { path: '**', redirectTo: '' }
@@ -45,6 +47,7 @@ const ROUTES: Routes = [
   imports: [
     BrowserModule,
     LayoutsModule,
+    AuthModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES)
   ],

@@ -1,0 +1,15 @@
+input.ng-pending {
+  background-color: grey;
+}
+input.ng-valid {
+  background-color: greenyellow;
+}
+input.ng-invalid {
+  background-color: salmon;
+}
+.errorText {
+  background-color: rgba(248, 181, 173, 0.966);
+}
+.errorText p {
+  padding: 10px;
+}
