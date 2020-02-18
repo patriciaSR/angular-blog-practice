@@ -5,31 +5,35 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
 import { LayoutsModule } from './layouts/layouts.module';
-import { PostsModule } from './posts/posts.module';
+import { SimpleLayoutComponent } from './layouts/simple-layout/simple-layout.component';
 
 const apiConfig = {
   api: 'https://localhost:3443'
 };
 
 const ROUTES: Routes = [
-  { path: '', redirectTo: 'posts', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: '',
     component: AppLayoutComponent,
     children: [
+      {
+        path: 'home',
+        loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+      },
       {
         path: 'posts',
         loadChildren: () => import('./posts/posts.module').then(m => m.PostsModule)
       }
     ]
   },
-  // {
-  //   path: 'login',
-  //   component: SimpleLayoutComponent,
-  //   children: [
-  //     { path: '', component: LoginComponent }
-  //   ]
-  // },
+  {
+    path: 'login',
+    component: SimpleLayoutComponent,
+    children: [
+      // { path: '', component: LoginComponent }
+    ]
+  },
   { path: '**', redirectTo: '' }
 ];
 
@@ -41,9 +45,8 @@ const ROUTES: Routes = [
   imports: [
     BrowserModule,
     LayoutsModule,
-    PostsModule,
-    RouterModule.forRoot(ROUTES),
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [{ provide: 'apiConfig', useValue: apiConfig }],
   bootstrap: [AppComponent]
