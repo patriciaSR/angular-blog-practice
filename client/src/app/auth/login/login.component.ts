@@ -29,7 +29,8 @@ export class LoginComponent implements OnInit {
     this.sub = this.service.getToken(this.form.value).subscribe(
       (response) => {
         this.userToken = response;
-        console.log(this.userToken);
+        sessionStorage.setItem('userToken', response.token);
+        // redirect to home o posts ?¿
       },
       (error) => console.log(error));
   }
