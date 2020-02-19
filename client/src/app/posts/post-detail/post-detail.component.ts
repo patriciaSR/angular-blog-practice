@@ -19,13 +19,12 @@ export class PostDetailComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       this.id = params.id;
-
-      this.sub = this.postsService.getPostById(this.id).subscribe(
-        (response) => this.postInfo$ = response,
-        (error) => console.log(error)
-      );
-
     });
+
+    this.sub = this.postsService.getPostById(this.id).subscribe(
+      (response) => this.postInfo$ = response,
+      (error) => console.log(error)
+    );
   }
 
   ngOnDestroy(): void {
