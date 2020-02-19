@@ -1,0 +1,26 @@
+.posts__list {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+.posts-list__item {
+  padding: 10px;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2), 0 2px 16px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 4px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  color: blueviolet;
+}
+.post__title {
+  margin-bottom: 4px;
+}
+.date {
+  font-size: 10px;
+  color: gray;
+  margin: 0
+}
