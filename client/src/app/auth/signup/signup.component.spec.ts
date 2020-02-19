@@ -29,4 +29,9 @@ describe('SignupComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should set form property', () => {
+    component.ngOnInit();
+    expect(component.form).toBeDefined();
+  });
 });

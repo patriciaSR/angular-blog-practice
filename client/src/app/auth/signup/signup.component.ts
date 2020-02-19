@@ -13,9 +13,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   form: FormGroup;
   sub: Subscription;
   errorText: string;
-  success: object = {
-    message: ''
-  };
+  success: object;
 
   constructor( private signupService: SignupService, private router: Router) { }
 
