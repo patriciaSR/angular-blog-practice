@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/internal/operators';
-import { PostDetailDTO } from './post-detail-dto.model';
-import { PostDetail } from './post-detail.model ';
-import { PostsDTO } from './posts-dto.model';
+import { PostDTO } from './post-dto.model';
+import { Post } from './post.model ';
 import { PostsProxyService } from './posts-proxy.service';
-import { Posts } from './posts.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +12,12 @@ export class PostsService {
 
   constructor(private proxy: PostsProxyService) { }
 
-  getPosts(): Observable<Posts[]> {
+  getPosts(): Observable<Post[]> {
     return this.proxy.getPosts().pipe(
-      map((postsDTO: PostsDTO[]) => {
-        let posts: Posts[] = [];
-        postsDTO.map((postDTO: PostsDTO) => {
-          const post: Posts = {
+      map((postsDTO: PostDTO[]) => {
+        let posts: Post[] = [];
+        postsDTO.map((postDTO: PostDTO) => {
+          const post: Post = {
             _id: postDTO._id,
             title: postDTO.title,
             date: postDTO.date,
@@ -32,26 +30,18 @@ export class PostsService {
     );
   }
 
-  getPostById(id: string): Observable<PostDetail> {
+  getPostById(id: string): Observable<Post> {
     return this.proxy.getPostById(id).pipe(
-      map((postDetailDTO: PostDetailDTO) => {
-        const post: PostDetail = {
-          _id: postDetailDTO._id,
-          title: postDetailDTO.title,
-          date: postDetailDTO.date,
-          content: postDetailDTO.content,
-          userInfo: postDetailDTO.userInfo,
-          comments: postDetailDTO.comments
-        };
-
+      map((postDTO: PostDTO) => {
+        const post: Post = postDTO;
         return post;
       })
     );
   }
 
-  createPost(post: Posts): Observable<Posts> {
+  createPost(post: Post): Observable<Post> {
     return this.proxy.sendPost(this.adaptModelTODTO(post)).pipe(
-      map((postResult: PostsDTO) => {
+      map((postResult: PostDTO) => {
         return {
           ...post
         };
@@ -59,12 +49,9 @@ export class PostsService {
     );
   }
 
-  private adaptModelTODTO(post: Posts): PostsDTO {
+  private adaptModelTODTO(post: Post): PostDTO {
     return {
-    _id: post._id,
-    title: post.title,
-    content: post.content,
-    image: post.image
+      ...post
     };
     }
 }

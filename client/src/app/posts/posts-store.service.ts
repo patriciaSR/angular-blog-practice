@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { Store } from '../state/store';
-import { Posts } from './posts.model';
+import { Post } from './post.model ';
 import { PostsService } from './posts.service';
+
 
 @Injectable({providedIn: 'root'})
 
-export class PostsStoreService extends Store<Posts[]> {
+export class PostsStoreService extends Store<Post[]> {
 
   constructor(private service: PostsService) {
     super();
   }
 
-  init(): Promise<Posts[]> {
+  init(): Promise<Post[]> {
     if (this.get()) { return; }
 
     return this.service.getPosts().pipe(
@@ -20,7 +21,7 @@ export class PostsStoreService extends Store<Posts[]> {
     ).toPromise();
   }
 
-  createPost$(post: Posts): Promise<Posts> {
+  createPost$(post: Post): Promise<Post> {
     return this.service.createPost(post).pipe(
     tap(postResult => {
       this.store([postResult, ...this.get()]);

@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PostDetailDTO } from './post-detail-dto.model';
-import { PostsDTO } from './posts-dto.model';
+import { PostDTO } from './post-dto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +10,15 @@ export class PostsProxyService {
 
   constructor(private httpClient: HttpClient, @Inject('apiConfig') private apiConfig: any) { }
 
-  getPosts(): Observable<PostsDTO[]> {
-    return this.httpClient.get<PostsDTO[]>(this.apiConfig.api + '/posts');
+  getPosts(): Observable<PostDTO[]> {
+    return this.httpClient.get<PostDTO[]>(this.apiConfig.api + '/posts');
   }
 
-  getPostById(id: string): Observable<PostDetailDTO> {
-    return this.httpClient.get<PostDetailDTO>(this.apiConfig.api + '/posts/' + id);
+  getPostById(id: string): Observable<PostDTO> {
+    return this.httpClient.get<PostDTO>(this.apiConfig.api + '/posts/' + id);
   }
 
-  sendPost(post: PostsDTO): Observable<PostsDTO> {
-    return this.httpClient.post<PostsDTO>(this.apiConfig.api + '/posts', { post });
+  sendPost(post: PostDTO): Observable<PostDTO> {
+    return this.httpClient.post<PostDTO>(this.apiConfig.api + '/posts', { post });
   }
 }

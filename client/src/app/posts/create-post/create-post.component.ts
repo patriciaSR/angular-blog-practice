@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Post } from '../post.model ';
 import { PostsStoreService } from '../posts-store.service';
-import { Posts } from '../posts.model';
 
 @Component({
   selector: 'app-create-post',
@@ -27,7 +27,7 @@ export class CreatePostComponent implements OnInit {
     const content = this.form.get('content').value;
     const image = this.form.get('image').value;
 
-    const newPost: Posts = {
+    const newPost: Post = {
       title,
       content,
       image

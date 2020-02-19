@@ -1,14 +1,14 @@
-export interface PostDetailDTO {
-  _id: string;
+export interface PostDTO {
+  _id?: string;
   title: string;
   content: string;
-  userID: string;
-  tags: string[];
-  categories: string[];
-  image: string;
-  date: string;
-  userInfo: PostUserInfoDTO;
-  comments: CommentDTO[];
+  userID?: string;
+  tags?: string[];
+  categories?: string[];
+  image?: string;
+  date?: string;
+  userInfo?: PostUserInfoDTO;
+  comments?: CommentDTO[];
 }
 
 export interface PostUserInfoDTO {

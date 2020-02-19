@@ -1,9 +1,9 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
+import { Post } from './post.model ';
 import { FAKE_POSTS } from './posts-fake.spec';
 import { PostsProxyService } from './posts-proxy.service';
-import { Posts } from './posts.model';
 import { PostsService } from './posts.service';
 
 const apiConfig = {
@@ -28,7 +28,7 @@ describe('PostsService', () => {
   it('should adapt postsDTO to Posts', () => {
     const spyService = spyOn(TestBed.inject(PostsProxyService), 'getPosts').and.callFake(() => of(FAKE_POSTS));
 
-    service.getPosts().subscribe((posts: Posts[]) => {
+    service.getPosts().subscribe((posts: Post[]) => {
       expect(posts[0].title).toEqual(FAKE_POSTS[0].title);
       expect(posts[0].date).toEqual(FAKE_POSTS[0].date);
       expect(posts[0]._id).toEqual(FAKE_POSTS[0]._id);

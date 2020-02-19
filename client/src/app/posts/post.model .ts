@@ -1,14 +1,14 @@
-export interface PostDetail {
-  _id: string;
+export interface Post {
+  _id?: string;
   title: string;
   content: string;
-  date: string;
-  // userID: string;
-  // tags: string[];
-  // categories: string[];
-  // image: string;
-  userInfo: PostUserInfo;
-  comments: Comment[];
+  date?: string;
+  userID?: string;
+  tags?: string[];
+  categories?: string[];
+  image?: string;
+  userInfo?: PostUserInfo;
+  comments?: Comment[];
 }
 
 export interface PostUserInfo {

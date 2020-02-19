@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { PostDetail } from '../post-detail.model ';
+import { Post } from '../post.model ';
 import { PostsService } from '../posts.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { PostsService } from '../posts.service';
   styleUrls: ['./post-detail.component.css']
 })
 export class PostDetailComponent implements OnInit, OnDestroy {
-  postInfo: PostDetail;
+  postInfo: Post;
   id: string;
   sub: Subscription;
 
