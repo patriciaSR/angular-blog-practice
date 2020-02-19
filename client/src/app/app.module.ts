@@ -9,6 +9,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
 import { LayoutsModule } from './layouts/layouts.module';
 import { SimpleLayoutComponent } from './layouts/simple-layout/simple-layout.component';
+import { CreatePostComponent } from './posts/create-post/create-post.component';
 
 const apiConfig = {
   api: 'https://localhost:3443'
@@ -27,8 +28,12 @@ const ROUTES: Routes = [
       {
         path: 'posts',
         loadChildren: () => import('./posts/posts.module').then(m => m.PostsModule)
+      },
+      {
+        path: 'newpost',
+        component: CreatePostComponent
       }
-    ]
+  ]
   },
   {
     path: '',

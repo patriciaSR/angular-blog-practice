@@ -1,0 +1,31 @@
+<p>create-post works!</p>
+
+<form [formGroup]="form">
+  <label for="firstname">
+    Title:
+    <input name="title" type="text" formControlName="title">
+  </label>
+  <div class="errorText" *ngIf="form.get('title').dirty && !form.get('title').valid">
+    <p *ngIf="form.get('title').hasError('required')">Debes poner un título</p>
+  </div>
+
+  <label for="content">
+    Content:
+    <textarea name="content" formControlName="content" rows="4" cols="50"></textarea>
+  </label>
+  <div class="errorText" *ngIf="form.get('content').dirty && !form.get('content').valid">
+    <p *ngIf="form.get('content').hasError('required')">Debes poner un contenido a tu post</p>
+  </div>
+
+  <label for="image">
+    ImageURL:
+    <input name="image" type="text" formControlName="image">
+  </label>
+
+  <button (click)="onSendPost($event)" [disabled]="!form.valid">Create Post</button>
+
+  <!-- <div class="errorText" *ngIf="errorText">
+  <p>{{ errorText }}</p>
+  </div> -->
+
+</form>
