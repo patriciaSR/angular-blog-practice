@@ -22,7 +22,8 @@ export class PostsService {
           const post: Posts = {
             _id: postDTO._id,
             title: postDTO.title,
-            date: postDTO.date
+            date: postDTO.date,
+            content: postDTO.content
           };
           posts = [...posts, post];
         });
@@ -47,4 +48,23 @@ export class PostsService {
       })
     );
   }
+
+  createPost(post: Posts): Observable<Posts> {
+    return this.proxy.sendPost(this.adaptModelTODTO(post)).pipe(
+      map((postResult: PostsDTO) => {
+        return {
+          ...post
+        };
+      })
+    );
+  }
+
+  private adaptModelTODTO(post: Posts): PostsDTO {
+    return {
+    _id: post._id,
+    title: post.title,
+    content: post.content,
+    image: post.image
+    };
+    }
 }

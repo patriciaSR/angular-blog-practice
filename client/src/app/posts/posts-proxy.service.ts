@@ -18,4 +18,8 @@ export class PostsProxyService {
   getPostById(id: string): Observable<PostDetailDTO> {
     return this.httpClient.get<PostDetailDTO>(this.apiConfig.api + '/posts/' + id);
   }
+
+  sendPost(post: PostsDTO): Observable<PostsDTO> {
+    return this.httpClient.post<PostsDTO>(this.apiConfig.api + '/posts', { post });
+  }
 }

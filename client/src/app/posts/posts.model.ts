@@ -1,5 +1,7 @@
 export interface Posts {
-  _id: string;
+  _id?: string;
   title: string;
-  date: string;
+  date?: string;
+  content: string;
+  image?: string;
 }

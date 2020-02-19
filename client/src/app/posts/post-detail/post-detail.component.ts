@@ -10,7 +10,7 @@ import { PostsService } from '../posts.service';
   styleUrls: ['./post-detail.component.css']
 })
 export class PostDetailComponent implements OnInit, OnDestroy {
-  postInfo$: PostDetail;
+  postInfo: PostDetail;
   id: string;
   sub: Subscription;
 
@@ -22,7 +22,7 @@ export class PostDetailComponent implements OnInit, OnDestroy {
     });
 
     this.sub = this.postsService.getPostById(this.id).subscribe(
-      (response) => this.postInfo$ = response,
+      (response) => this.postInfo = response,
       (error) => console.log(error)
     );
   }

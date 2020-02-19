@@ -1,15 +1,15 @@
 <p>post-detail works!</p>
-<div class="post__container" *ngIf="postInfo$">
+<div class="post__container" *ngIf="postInfo">
   <div class="post__content">
-    <h2>{{ postInfo$.title }}</h2>
-    <h3 class="username">{{ postInfo$.userInfo.username }}</h3>
+    <h2>{{ postInfo.title }}</h2>
+    <h3 class="username">{{ postInfo.userInfo.username }}</h3>
 
-    <p class="date">{{ postInfo$.date | date }}</p>
-    <p>{{ postInfo$.content }}</p>
+    <p class="date">{{ postInfo.date | date }}</p>
+    <p>{{ postInfo.content }}</p>
   </div>
 
   <ol class="comment-list">
-    <li class="comment-list__item" *ngFor="let comment of postInfo$.comments" id="comment._id">
+    <li class="comment-list__item" *ngFor="let comment of postInfo.comments" id="comment._id">
       <div class="comment__container">
         <h3 class="username">{{ comment.userInfo.username }}</h3>
         <p class="date">{{ comment.date | date }}</p>

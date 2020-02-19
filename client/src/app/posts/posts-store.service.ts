@@ -19,4 +19,12 @@ export class PostsStoreService extends Store<Posts[]> {
       tap(this.store)
     ).toPromise();
   }
+
+  createPost$(post: Posts): Promise<Posts> {
+    return this.service.createPost(post).pipe(
+    tap(postResult => {
+      this.store([postResult, ...this.get()]);
+  })
+  ).toPromise();
+  }
 }
