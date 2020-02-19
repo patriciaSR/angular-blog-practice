@@ -1,14 +1,14 @@
 label {
   display: block;
 }
-input.ng-pending {
-  background-color: grey;
-}
 input.ng-valid {
-  background-color: greenyellow;
+  background-color: rgb(193, 224, 146);
 }
 input.ng-invalid {
-  background-color: salmon;
+  background-color: rgb(235, 164, 156);
+}
+input.ng-untouched {
+  background-color:  rgb(200, 192, 192);;
 }
 .errorText {
   background-color: rgba(248, 181, 173, 0.966);
