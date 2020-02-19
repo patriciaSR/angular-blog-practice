@@ -41,7 +41,7 @@ export class SignupComponent implements OnInit, OnDestroy {
         this.router.navigate(['home']);
       },
       (error) => {
-        this.errorText = 'invalid username or password';
+        this.errorText = error.error;
         console.log(error);
       });
   }
