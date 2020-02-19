@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
 import { LayoutsModule } from './layouts/layouts.module';
 import { SimpleLayoutComponent } from './layouts/simple-layout/simple-layout.component';
@@ -30,10 +31,11 @@ const ROUTES: Routes = [
     ]
   },
   {
-    path: 'login',
+    path: '',
     component: SimpleLayoutComponent,
     children: [
-      { path: '', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'signup', component: SignupComponent },
     ]
   },
   { path: '**', redirectTo: '' }

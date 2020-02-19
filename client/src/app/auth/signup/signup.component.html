@@ -1,0 +1,50 @@
+<p>signup works!</p>
+
+<form [formGroup]="form">
+  <label for="firstname">
+    FirstName:
+    <input name="firstname" type="text" formControlName="firstname">
+  </label>
+  <div class="errorText" *ngIf="form.get('firstname').dirty && !form.get('firstname').valid">
+    <p *ngIf="form.get('firstname').hasError('required')">Debes poner un nombre</p>
+  </div>
+
+  <label for="lastname">
+    LastName:
+    <input name="lastname" type="text" formControlName="lastname">
+  </label>
+
+  <label for="username">
+    Username:
+    <input name="username" type="text" formControlName="username">
+  </label>
+  <div class="errorText" *ngIf="form.get('username').dirty && !form.get('username').valid">
+    <p *ngIf="form.get('username').hasError('required')">Debes poner un username</p>
+  </div>
+
+  <label for="email">
+    Email:
+    <input name="email" type="text" formControlName="email">
+  </label>
+  <div class="errorText" *ngIf="form.get('email').dirty && !form.get('email').valid">
+    <p *ngIf="form.get('email').hasError('required')">Debes poner un email</p>
+    <p *ngIf="form.get('email').hasError('email')">Debes poner un email válido</p>
+  </div>
+
+  <label for="password">
+    Password:
+    <input name="password" type="password" formControlName="password">
+  </label>
+
+  <div class="errorText" *ngIf="form.get('password').dirty && !form.get('password').valid">
+    <p *ngIf="form.get('password').hasError('required')">Debes poner una contraseña</p>
+    <p *ngIf="form.get('password').hasError('minlength')">La contraseña debe tener mínimo 6 caracteres</p>
+  </div>
+
+  <button (click)="onSignUp($event)" [disabled]="!form.valid">Send</button>
+
+  <div class="errorText" *ngIf="errorText">
+  <p>{{ errorText }}</p>
+  </div>
+
+</form>
