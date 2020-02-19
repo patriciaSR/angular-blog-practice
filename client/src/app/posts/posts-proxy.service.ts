@@ -19,6 +19,6 @@ export class PostsProxyService {
   }
 
   sendPost(post: PostDTO): Observable<PostDTO> {
-    return this.httpClient.post<PostDTO>(this.apiConfig.api + '/posts', { post });
+    return this.httpClient.post<PostDTO>(this.apiConfig.api + '/posts', post);
   }
 }

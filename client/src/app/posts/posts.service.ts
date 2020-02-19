@@ -40,18 +40,11 @@ export class PostsService {
   }
 
   createPost(post: Post): Observable<Post> {
-    return this.proxy.sendPost(this.adaptModelTODTO(post)).pipe(
+    return this.proxy.sendPost(post).pipe(
       map((postResult: PostDTO) => {
-        return {
-          ...post
-        };
+        const newPost: PostDTO = postResult;
+        return newPost;
       })
     );
   }
-
-  private adaptModelTODTO(post: Post): PostDTO {
-    return {
-      ...post
-    };
-    }
 }
