@@ -20,6 +20,9 @@
   </div>
 
   <button (click)="onSubmit($event)" [disabled]="!form.valid">Send</button>
-</form>
 
-{{ form.valid }}
+  <div class="errorText" *ngIf="errorText">
+  <p>{{ errorText }}</p>
+  </div>
+
+</form>

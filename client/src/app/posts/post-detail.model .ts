@@ -2,23 +2,23 @@ export interface PostDetail {
   _id: string;
   title: string;
   content: string;
+  date: string;
   // userID: string;
   // tags: string[];
   // categories: string[];
   // image: string;
-  // date: string;
-  // userInfo: PostUserInfo;
+  userInfo: PostUserInfo;
   comments: Comment[];
 }
 
-// export interface PostUserInfo {
-//   _id: string;
-//   firstname: string;
-//   lastname: string;
-//   username: string;
-//   image: string;
-//   role: string;
-// }
+export interface PostUserInfo {
+  _id: string;
+  firstname: string;
+  lastname: string;
+  username: string;
+  image: string;
+  role: string;
+}
 
 export interface Comment {
   _id: string;

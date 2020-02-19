@@ -31,13 +31,15 @@ export class PostsService {
     );
   }
 
-  getPostById(id): Observable<PostDetail> {
+  getPostById(id: string): Observable<PostDetail> {
     return this.proxy.getPostById(id).pipe(
       map((postDetailDTO: PostDetailDTO) => {
         const post: PostDetail = {
           _id: postDetailDTO._id,
           title: postDetailDTO.title,
+          date: postDetailDTO.date,
           content: postDetailDTO.content,
+          userInfo: postDetailDTO.userInfo,
           comments: postDetailDTO.comments
         };
 

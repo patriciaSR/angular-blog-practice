@@ -15,7 +15,7 @@ export class PostsProxyService {
     return this.httpClient.get<PostsDTO[]>(this.apiConfig.api + '/posts');
   }
 
-  getPostById(id): Observable<PostDetailDTO> {
+  getPostById(id: string): Observable<PostDetailDTO> {
     return this.httpClient.get<PostDetailDTO>(this.apiConfig.api + '/posts/' + id);
   }
 }
