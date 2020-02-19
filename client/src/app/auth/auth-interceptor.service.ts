@@ -13,11 +13,13 @@ export class AuthInterceptorService implements HttpInterceptor {
     // Obtenemos el token
     const token = sessionStorage.getItem('userToken');
     // Importante: modificamos de forma inmutable, haciendo el clonado de la petición
-    const authReq = req.clone(
-      { headers: req.headers.set('Authorization', 'Bearer ' + token) }
-    );
+    if (req.url.search('/login') === -1) {
+      req = req.clone(
+        { headers: req.headers.set('Authorization', 'Bearer ' + token) }
+      );
+    }
     // Pasamos al siguiente interceptor de la cadena la petición modificada
-    return next.handle(authReq);
+    return next.handle(req);
   }
 }
 

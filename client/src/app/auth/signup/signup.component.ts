@@ -33,7 +33,6 @@ export class SignupComponent implements OnInit, OnDestroy {
     this.sub = this.signupService.signUp(this.form.value).subscribe(
       (response) => {
         this.success = response;
-        console.log(this.success);
         alert('User registered correctly');
 
         this.router.navigate(['home']);

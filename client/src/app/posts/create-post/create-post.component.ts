@@ -24,16 +24,8 @@ export class CreatePostComponent implements OnInit {
 
   async onSendPost($event) {
     $event.preventDefault();
-    const title = this.form.get('title').value;
-    const content = this.form.get('content').value;
-    const image = this.form.get('image').value;
 
-    const newPost: Post = {
-      title,
-      content,
-      image
-    };
-
+    const newPost: Post = this.form.value;
     const response = await this.store.createPost$(newPost);
 
     this.router.navigate([`posts/${response._id}`]);
