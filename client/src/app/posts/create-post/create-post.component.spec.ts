@@ -37,6 +37,10 @@ describe('CreatePostComponent', () => {
     expect(component.form).toBeDefined();
   });
 
+  // it('should call getPostById() method() when postID is defined ', () => {
+
+  // });
+
   it('should  call createPost service and navigate to new post created path', () => {
     const createdPost = {
       _id: '123',
