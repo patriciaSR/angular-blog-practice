@@ -11,12 +11,14 @@ import { PostsStoreService } from '../posts-store.service';
 })
 export class PostsListComponent implements OnInit {
   posts$: Observable<Post[]>;
+  userToken: string;
 
   constructor(private store: PostsStoreService, private router: Router) { }
 
   ngOnInit(): void {
     this.store.init();
     this.posts$ = this.store.get$();
+    this.userToken = sessionStorage.getItem('userToken');
   }
 
   onNavigate(path: string, id: string) {

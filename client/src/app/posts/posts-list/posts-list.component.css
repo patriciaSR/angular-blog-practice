@@ -28,3 +28,6 @@ a:hover {
   color: gray;
   margin: 0
 }
+.nav__link {
+  color: blueviolet;
+}
