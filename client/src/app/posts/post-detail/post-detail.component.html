@@ -17,10 +17,19 @@
       </div>
     </li>
   </ol>
+
+  <div *ngIf="userToken; else noLogin">
+    <button (click)="onDelete(postInfo._id)">Delete Post</button>
+    <button (click)="onNavigate('newpost/', postInfo._id)">Update Post</button>
+  </div>
 </div>
 <ng-template #noPost>Post not found. Create a new post
   <a [routerLink]="['/newpost']">here >></a>
 </ng-template>
-<button (click)="onDelete(postInfo._id)">Delete Post</button>
-<button (click)="onNavigate('newpost/', postInfo._id)">Update Post</button>
 
+
+
+<ng-template class="noLogin" #noLogin>
+  To update or delete post, please Login first
+  <a class="nav__link" [routerLink]="['/login']">here >></a>
+</ng-template>

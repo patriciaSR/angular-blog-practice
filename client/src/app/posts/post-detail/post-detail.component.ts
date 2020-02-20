@@ -12,6 +12,7 @@ import { PostsService } from '../posts.service';
 })
 export class PostDetailComponent implements OnInit, OnDestroy {
   postInfo: Post;
+  userToken: string;
   id: string;
   sub: Subscription;
 
@@ -23,6 +24,7 @@ export class PostDetailComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.userToken = sessionStorage.getItem('userToken');
     this.activatedRoute.params.subscribe((params) => {
       this.id = params.id;
     });
