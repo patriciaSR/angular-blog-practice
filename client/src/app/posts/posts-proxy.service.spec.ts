@@ -34,4 +34,16 @@ describe('PostsProxyService', () => {
     request.flush(FAKE_POSTS);
     httpMock.verify();
   });
+
+  // it('should call to server to get all posts', () => {
+  //   // const service: UsersProxyService = TestBed.get(UsersProxyService);
+  //   const httpMock = TestBed.inject(HttpTestingController);
+  //   service.getPosts().subscribe(posts => expect(posts).toBe(FAKE_POSTS));
+
+  //   const request = httpMock.expectOne('https://localhost:3443/posts');
+
+  //   expect(request.request.method).toEqual('GET');
+  //   request.flush(FAKE_POSTS);
+  //   httpMock.verify();
+  // });
 });

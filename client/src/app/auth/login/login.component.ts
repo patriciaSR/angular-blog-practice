@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         this.userToken = response;
         sessionStorage.setItem('userToken', response.token);
 
-        this.router.navigate(['home']);
+        this.router.navigate(['posts']);
       },
       (error) => {
         this.errorText = 'invalid username or password';
