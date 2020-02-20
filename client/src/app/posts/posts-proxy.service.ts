@@ -10,19 +10,19 @@ export class PostsProxyService {
 
   constructor(private httpClient: HttpClient, @Inject('apiConfig') private apiConfig: any) { }
 
-  getPosts(): Observable<PostDTO[]> {
+  getPosts$(): Observable<PostDTO[]> {
     return this.httpClient.get<PostDTO[]>(this.apiConfig.api + '/posts');
   }
 
-  getPostById(postID: string): Observable<PostDTO> {
+  getPostById$(postID: string): Observable<PostDTO> {
     return this.httpClient.get<PostDTO>(this.apiConfig.api + '/posts/' + postID);
   }
 
-  sendPost(post: PostDTO): Observable<PostDTO> {
+  createPost$(post: PostDTO): Observable<PostDTO> {
     return this.httpClient.post<PostDTO>(this.apiConfig.api + '/posts', post);
   }
 
-  deletePost(postID: string): Observable<PostDTO> {
+  deletePost$(postID: string): Observable<PostDTO> {
     return this.httpClient.delete<PostDTO>(this.apiConfig.api + '/posts/' + postID);
   }
 

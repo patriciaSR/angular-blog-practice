@@ -53,7 +53,7 @@ export class CreatePostComponent implements OnInit {
 
   async onUpdatePost() {
     const newPost: Post = this.form.value;
-    const response = await this.store.updatePost$(this.postID, newPost);
+    await this.store.updatePost$(this.postID, newPost);
 
     this.router.navigate([`posts/${this.postID}`]);
   }

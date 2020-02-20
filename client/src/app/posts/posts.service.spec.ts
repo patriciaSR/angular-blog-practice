@@ -33,7 +33,7 @@ describe('PostsService', () => {
   });
 
   it('should adapt postDTO to Post model on getPosts() method', () => {
-    const spyService = spyOn(TestBed.inject(PostsProxyService), 'getPosts').and.callFake(() => of(FAKE_POSTS));
+    const spyService = spyOn(TestBed.inject(PostsProxyService), 'getPosts$').and.callFake(() => of(FAKE_POSTS));
 
     service.getPosts().subscribe((posts: Post[]) => {
       expect(posts[0].title).toEqual(FAKE_POSTS[0].title);
@@ -45,7 +45,7 @@ describe('PostsService', () => {
   });
 
   it('should adapt postDTO to Post on getPostByID() method', () => {
-    const spyService = spyOn(TestBed.inject(PostsProxyService), 'getPostById').and.callFake(() => of(FAKE_POST));
+    const spyService = spyOn(TestBed.inject(PostsProxyService), 'getPostById$').and.callFake(() => of(FAKE_POST));
     const id = '5e31d951bcdbf849883e9bd0';
 
     service.getPostById(id).subscribe((post: Post) => {
@@ -58,7 +58,7 @@ describe('PostsService', () => {
   });
 
   it('should adapt Post to PostDTO on createPost() method', () => {
-    const spyService = spyOn(TestBed.inject(PostsProxyService), 'sendPost').and.callFake(() => of(FAKE_POST));
+    const spyService = spyOn(TestBed.inject(PostsProxyService), 'createPost$').and.callFake(() => of(FAKE_POST));
 
     service.createPost(newPost).subscribe((post: PostDTO) => {
       expect(post.title).toEqual(FAKE_POST.title);
@@ -70,13 +70,31 @@ describe('PostsService', () => {
   });
 
   it('should adapt PostDTO to Post on delete() method', () => {
-    const spyService = spyOn(TestBed.inject(PostsProxyService), 'deletePost').and.callFake(() => of(FAKE_POST));
+    const spyService = spyOn(TestBed.inject(PostsProxyService), 'deletePost$').and.callFake(() => of(FAKE_POST));
     const id = '5e31d951bcdbf849883e9bd0';
 
     service.deletePost(id).subscribe((postDeleted: Post) => {
       expect(postDeleted.title).toEqual(FAKE_POST.title);
       expect(postDeleted.content).toEqual(FAKE_POST.content);
       expect(postDeleted._id).toBe(id);
+    });
+
+    expect(spyService).toHaveBeenCalled();
+  });
+
+  it('should adapt Post to PostDTO on updatePost() method', () => {
+    const spyService = spyOn(TestBed.inject(PostsProxyService), 'putPost$').and.callFake(() => of(FAKE_POST));
+    const postID = '5e31d951bcdbf849883e9bd0';
+
+    const updatePost = {
+      title: 'hola soy dumbo111',
+      content: 'hola soy dumbo111'
+    };
+
+    service.updatePost(postID, updatePost).subscribe((post: PostDTO) => {
+      expect(post.title).toEqual(FAKE_POST.title);
+      expect(post.date).toEqual(FAKE_POST.date);
+      expect(post._id).toBeDefined();
     });
 
     expect(spyService).toHaveBeenCalled();

@@ -40,7 +40,7 @@ describe('PostsStoreService', () => {
 
   // it('should return a Promise<PostDTO> on createPost()', async () => {
   //   const spyService = spyOn(TestBed.inject(PostsService), 'createPost').and.callFake(() => of(FAKE_POST));
-  //   const spyStore = spyOn(TestBed.inject(Store), 'get').and.callFake(() => FAKE_POSTS);
+  //   const spyStore = spyOn(TestBed.inject(Store), 'get').and.returnValue(FAKE_POSTS);
 
   //   await service.createPost$(newPost);
 
@@ -53,6 +53,17 @@ describe('PostsStoreService', () => {
   //   const id = '5e31d951bcdbf849883e9bd0';
 
   //   await service.deletePost$(id);
+
+  //   expect(spyService).toHaveBeenCalled();
+  // });
+
+  // it('should return a Promise<PostDTO> on updatePost()', async () => {
+  //   const spyService = spyOn(TestBed.inject(PostsService), 'updatePost').and.callFake(() => of(FAKE_POST));
+  //   const spyStore = spyOn(TestBed.inject(Store), 'get').and.returnValue(FAKE_POSTS);
+
+  //   const id = '5e31d951bcdbf849883e9bd0';
+
+  //   await service.updatePost$(id, newPost);
 
   //   expect(spyService).toHaveBeenCalled();
   // });

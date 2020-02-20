@@ -13,7 +13,7 @@ export class PostsService {
   constructor(private proxy: PostsProxyService) { }
 
   getPosts(): Observable<Post[]> {
-    return this.proxy.getPosts().pipe(
+    return this.proxy.getPosts$().pipe(
       map((postsDTO: PostDTO[]) => {
         let posts: Post[] = [];
         postsDTO.map((postDTO: PostDTO) => {
@@ -31,7 +31,7 @@ export class PostsService {
   }
 
   getPostById(id: string): Observable<Post> {
-    return this.proxy.getPostById(id).pipe(
+    return this.proxy.getPostById$(id).pipe(
       map((postDTO: PostDTO) => {
         const post: Post = postDTO;
         return post;
@@ -40,7 +40,7 @@ export class PostsService {
   }
 
   createPost(post: Post): Observable<Post> {
-    return this.proxy.sendPost(post).pipe(
+    return this.proxy.createPost$(post).pipe(
       map((postResult: PostDTO) => {
         const newPost: PostDTO = postResult;
         return newPost;
@@ -49,7 +49,7 @@ export class PostsService {
   }
 
   deletePost(postID: string): Observable<Post> {
-    return this.proxy.deletePost(postID).pipe(
+    return this.proxy.deletePost$(postID).pipe(
       map((postDTO: PostDTO) => {
         const deletedPost: Post = postDTO;
         return deletedPost;

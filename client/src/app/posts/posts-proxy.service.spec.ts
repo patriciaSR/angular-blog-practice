@@ -31,7 +31,7 @@ describe('PostsProxyService', () => {
   it('should call to server to get all posts', () => {
     // const service: UsersProxyService = TestBed.get(UsersProxyService);
     const httpMock = TestBed.inject(HttpTestingController);
-    service.getPosts().subscribe(posts => expect(posts).toBe(FAKE_POSTS));
+    service.getPosts$().subscribe(posts => expect(posts).toBe(FAKE_POSTS));
 
     const request = httpMock.expectOne('https://localhost:3443/posts');
 
@@ -43,7 +43,7 @@ describe('PostsProxyService', () => {
   it('should call to server to get post by id', () => {
     const id = '5e31d951bcdbf849883e9bd0';
     const httpMock = TestBed.inject(HttpTestingController);
-    service.getPostById(id).subscribe(posts => expect(posts).toBe(FAKE_POST));
+    service.getPostById$(id).subscribe(posts => expect(posts).toBe(FAKE_POST));
 
     const request = httpMock.expectOne('https://localhost:3443/posts/' + id);
 
@@ -54,7 +54,7 @@ describe('PostsProxyService', () => {
 
   it('should call to server to send new post', () => {
     const httpMock = TestBed.inject(HttpTestingController);
-    service.sendPost(newPost).subscribe(post => expect(post.title).toBe(FAKE_POST.title));
+    service.createPost$(newPost).subscribe(post => expect(post.title).toBe(FAKE_POST.title));
 
     const request = httpMock.expectOne('https://localhost:3443/posts');
 
@@ -67,11 +67,24 @@ describe('PostsProxyService', () => {
     const httpMock = TestBed.inject(HttpTestingController);
     const id = '5e4e61277b3414281ef448ad';
 
-    service.deletePost(id).subscribe(post => expect(post).toBe(FAKE_POST));
+    service.deletePost$(id).subscribe(post => expect(post).toBe(FAKE_POST));
 
     const request = httpMock.expectOne('https://localhost:3443/posts/' + id);
 
     expect(request.request.method).toEqual('DELETE');
+    request.flush(FAKE_POST);
+    httpMock.verify();
+  });
+
+  it('should call to server to put post by id', () => {
+    const httpMock = TestBed.inject(HttpTestingController);
+    const id = '5e4e61277b3414281ef448ad';
+
+    service.putPost$(id, newPost).subscribe(post => expect(post).toBe(FAKE_POST));
+
+    const request = httpMock.expectOne('https://localhost:3443/posts/' + id);
+
+    expect(request.request.method).toEqual('PUT');
     request.flush(FAKE_POST);
     httpMock.verify();
   });

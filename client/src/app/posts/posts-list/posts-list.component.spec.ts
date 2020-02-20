@@ -61,5 +61,14 @@ describe('PostsListComponent', () => {
 
     expect(spyService).toHaveBeenCalled();
   });
+
+  it('should call onDelete PostServive method', () => {
+    const id = '5e31d951bcdbf849883e9bd0';
+    const spyService = spyOn(TestBed.inject(PostsStoreService), 'deletePost$');
+
+    component.onDelete(id);
+
+    expect(spyService).toHaveBeenCalled();
+  });
 });
 

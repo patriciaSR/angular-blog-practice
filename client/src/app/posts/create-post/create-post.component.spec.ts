@@ -44,7 +44,8 @@ describe('CreatePostComponent', () => {
       content: 'hola'
     };
 
-    const spyService = spyOn(TestBed.inject(PostsStoreService), 'createPost$').and.returnValue(Promise.resolve(createdPost));
+    const spyService = spyOn(TestBed.inject(PostsStoreService), 'createPost$');
+    // .and.returnValue(Promise.resolve(createdPost));
 
     component.onSendPost();
 
