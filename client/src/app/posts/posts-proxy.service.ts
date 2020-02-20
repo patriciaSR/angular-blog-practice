@@ -25,4 +25,8 @@ export class PostsProxyService {
   deletePost(postID: string): Observable<PostDTO> {
     return this.httpClient.delete<PostDTO>(this.apiConfig.api + '/posts/' + postID);
   }
+
+  putPost$(postID: string, post: PostDTO): Observable<PostDTO> {
+    return this.httpClient.put<PostDTO>(this.apiConfig.api + '/posts/' + postID, post);
+  }
 }

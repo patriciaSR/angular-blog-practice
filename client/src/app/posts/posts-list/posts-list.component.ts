@@ -19,8 +19,12 @@ export class PostsListComponent implements OnInit {
     this.posts$ = this.store.get$();
   }
 
-  onNavigate(path: string) {
-    this.router.navigate([path]);
+  onNavigate(path: string, id: string) {
+    if (id) {
+      this.router.navigate([path + id]);
+    } else {
+      this.router.navigate([path]);
+    }
   }
 
   async onDelete(postID: string) {

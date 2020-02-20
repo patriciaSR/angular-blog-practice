@@ -33,6 +33,10 @@ const ROUTES: Routes = [
       {
         path: 'newpost',
         component: CreatePostComponent
+      },
+      {
+        path: 'newpost/:id',
+        component: CreatePostComponent
       }
   ]
   },

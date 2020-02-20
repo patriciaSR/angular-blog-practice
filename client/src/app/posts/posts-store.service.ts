@@ -38,4 +38,20 @@ export class PostsStoreService extends Store<Post[]> {
       })
     ).toPromise();
   }
+
+  updatePost$(postId: string, post: Post): Promise<Post> {
+    return this.service.updatePost(postId, post).pipe(
+      tap(() => {
+        const posts = this.get();
+        const p = Object.assign({}, post);
+        const index = this.searchIndex(posts, postId);
+        const newPosts = [...posts.slice(0, index), p, ...posts.slice(index + 1)];
+        this.store(newPosts);
+      })
+    ).toPromise();
+  }
+
+  private searchIndex(posts: Post[], postId: string): number {
+    return posts.findIndex(post => post._id === postId);
+  }
 }

@@ -22,6 +22,9 @@
     <input name="image" type="text" formControlName="image">
   </label>
 
-  <button (click)="onSendPost()" [disabled]="!form.valid">Create Post</button>
+  <button *ngIf="postID; else newPost" (click)="onUpdatePost()">Update Post</button>
+  <ng-template #newPost>
+    <button (click)="onSendPost()" [disabled]="!form.valid">Create Post</button>
+  </ng-template>
 
 </form>

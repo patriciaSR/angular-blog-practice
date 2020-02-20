@@ -1,6 +1,6 @@
 <p>posts-list works!</p>
 <h2 class="post-list__title">Post List</h2>
-<button (click)="onNavigate('newpost')">New Post +</button>
+<button (click)="onNavigate('newpost', '')">New Post +</button>
 
 <ol class="posts__list" *ngIf="posts$; else noPost">
   <li class="posts-list__item" *ngFor="let post of (posts$ | async)" id="post._id">
@@ -9,6 +9,7 @@
       <p class="date">{{ post.date | date }}</p>
     </a>
     <button (click)="onDelete(post._id)">Delete Post</button>
+    <button (click)="onNavigate('newpost/', post._id)">Update Post</button>
   </li>
 </ol>
 

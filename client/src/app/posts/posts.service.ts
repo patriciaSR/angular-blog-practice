@@ -56,4 +56,13 @@ export class PostsService {
       })
     );
   }
+
+  updatePost(postId: string, post: Post): Observable<Post> {
+    return this.proxy.putPost$(postId, post).pipe(
+      map((postResult: PostDTO) => {
+        const newPost: PostDTO = postResult;
+        return newPost;
+      })
+    );
+  }
 }

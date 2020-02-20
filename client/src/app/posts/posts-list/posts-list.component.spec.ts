@@ -48,7 +48,7 @@ describe('PostsListComponent', () => {
   it('should navigate to newpost path', inject([Router], (router: Router) => {
     const spyNav = spyOn(router, 'navigate');
 
-    component.onNavigate('newpost');
+    component.onNavigate('newpost', '');
 
     expect(spyNav).toHaveBeenCalledWith(['newpost']);
   }));
