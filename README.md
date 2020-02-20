@@ -71,11 +71,11 @@ If you want to learn more about server structure you can see [server folder](./s
 
 ---
 
-Also you need to **run the vue client** in other terminal with:
+Also you need to **run the angular client** in other terminal with:
 
-`npm run serve`
+`npm run start`
 
-The client is running now on safe port [https://localhost:8080](https://localhost:8080).
+The client is running now on safe port [https://localhost:4200](https://localhost:4200).
 
 
 If you want to learn more about vue client structure you can see [client folder](./client/README.md).
@@ -103,11 +103,8 @@ From `server/` folder, run unit and API REST tests using:
 
 ### Client tests
 
-From `client/` folder, run End2End testing using:
-
-**Warning** Remember to run before the **fake server** using: **`npm run fake-server`** from `server/` folder
-
-`npm run test:e2e`
+From `client/` folder, run unit tests using:
+`npm run test`
 
 ## Enjoy it :)
 
