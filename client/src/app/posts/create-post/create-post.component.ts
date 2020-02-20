@@ -22,9 +22,7 @@ export class CreatePostComponent implements OnInit {
     });
   }
 
-  async onSendPost($event) {
-    $event.preventDefault();
-
+  async onSendPost() {
     const newPost: Post = this.form.value;
     const response = await this.store.createPost$(newPost);
 
