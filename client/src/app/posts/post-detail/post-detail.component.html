@@ -22,3 +22,5 @@
   <a [routerLink]="['/newpost']">here >></a>
 </ng-template>
 <button (click)="onDelete(postInfo._id)">Delete Post</button>
+<button (click)="onNavigate('newpost/', postInfo._id)">Update Post</button>
+

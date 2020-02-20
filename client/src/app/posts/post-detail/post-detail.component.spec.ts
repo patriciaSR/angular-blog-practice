@@ -8,6 +8,13 @@
 //   api: 'https://localhost:3443'
 // };
 
+// const routes = [
+//   {
+//     path: 'newpost',
+//     component: CreatePostComponent
+//   }
+// ];
+
 // const fakeActivatedRoute = {
 //   params: {
 //       id: '123'
@@ -21,7 +28,7 @@
 //   beforeEach((() => {
 //     TestBed.configureTestingModule({
 //       declarations: [PostDetailComponent],
-//       imports: [HttpClientTestingModule, RouterTestingModule],
+//       imports: [HttpClientTestingModule, RouterTestingModule.withRoutes(routes)],
 //       providers: [
 //         { provide: 'apiConfig', useValue: apiConfig },
 //         { provide: ActivatedRoute,  useValue: fakeActivatedRoute },
@@ -39,4 +46,12 @@
 //   it('should create', () => {
 //     expect(component).toBeTruthy();
 //   });
+
+//   it('should navigate to newpost path', inject([Router], (router: Router) => {
+//     const spyNav = spyOn(router, 'navigate');
+
+//     component.onNavigate('newpost', '');
+
+//     expect(spyNav).toHaveBeenCalledWith(['newpost']);
+//  }));
 // });

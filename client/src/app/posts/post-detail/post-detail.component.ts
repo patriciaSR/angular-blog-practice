@@ -33,6 +33,10 @@ export class PostDetailComponent implements OnInit, OnDestroy {
     );
   }
 
+  onNavigate(path: string, id: string) {
+    this.router.navigate([path + id]);
+  }
+
   async onDelete(postID: string) {
     try {
       await this.store.deletePost$(postID);
