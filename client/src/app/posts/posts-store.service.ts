@@ -42,6 +42,7 @@ export class PostsStoreService extends Store<Post[]> {
   updatePost$(postId: string, post: Post): Promise<Post> {
     return this.service.updatePost(postId, post).pipe(
       tap(() => {
+        post = {_id: postId, ...post};
         const posts = this.get();
         const p = Object.assign({}, post);
         const index = this.searchIndex(posts, postId);
