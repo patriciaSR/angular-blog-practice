@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Post } from '../post.model ';
+import { PostsStoreService } from '../posts-store.service';
 import { PostsService } from '../posts.service';
 
 @Component({
@@ -14,7 +15,12 @@ export class PostDetailComponent implements OnInit, OnDestroy {
   id: string;
   sub: Subscription;
 
-  constructor(private postsService: PostsService, private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private store: PostsStoreService,
+    private postsService: PostsService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -25,6 +31,16 @@ export class PostDetailComponent implements OnInit, OnDestroy {
       (response) => this.postInfo = response,
       (error) => console.log(error)
     );
+  }
+
+  async onDelete(postID: string) {
+    try {
+      await this.store.deletePost$(postID);
+      alert('Post deleted correctly!');
+      this.router.navigate(['posts']);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   ngOnDestroy(): void {

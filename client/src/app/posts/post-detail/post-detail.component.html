@@ -21,3 +21,4 @@
 <ng-template #noPost>Post not found. Create a new post
   <a [routerLink]="['/newpost']">here >></a>
 </ng-template>
+<button (click)="onDelete(postInfo._id)">Delete Post</button>

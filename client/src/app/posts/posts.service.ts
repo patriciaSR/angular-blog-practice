@@ -47,4 +47,13 @@ export class PostsService {
       })
     );
   }
+
+  deletePost(postID: string): Observable<Post> {
+    return this.proxy.deletePost(postID).pipe(
+      map((postDTO: PostDTO) => {
+        const deletedPost: Post = postDTO;
+        return deletedPost;
+      })
+    );
+  }
 }

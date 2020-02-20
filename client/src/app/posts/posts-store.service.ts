@@ -5,7 +5,7 @@ import { Post } from './post.model ';
 import { PostsService } from './posts.service';
 
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 
 export class PostsStoreService extends Store<Post[]> {
 
@@ -23,9 +23,19 @@ export class PostsStoreService extends Store<Post[]> {
 
   createPost$(post: Post): Promise<Post> {
     return this.service.createPost(post).pipe(
-    tap(postResult => {
-      this.store([postResult, ...this.get()]);
-  })
-  ).toPromise();
+      tap(postResult => {
+        this.store([postResult, ...this.get()]);
+      })
+    ).toPromise();
+  }
+
+  deletePost$(postID: string): Promise<Post> {
+    return this.service.deletePost(postID).pipe(
+      tap(() => {
+        const posts = this.get();
+        const newPosts = posts.filter(post => post._id !== postID);
+        this.store(newPosts);
+      })
+    ).toPromise();
   }
 }

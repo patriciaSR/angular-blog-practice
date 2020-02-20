@@ -14,11 +14,15 @@ export class PostsProxyService {
     return this.httpClient.get<PostDTO[]>(this.apiConfig.api + '/posts');
   }
 
-  getPostById(id: string): Observable<PostDTO> {
-    return this.httpClient.get<PostDTO>(this.apiConfig.api + '/posts/' + id);
+  getPostById(postID: string): Observable<PostDTO> {
+    return this.httpClient.get<PostDTO>(this.apiConfig.api + '/posts/' + postID);
   }
 
   sendPost(post: PostDTO): Observable<PostDTO> {
     return this.httpClient.post<PostDTO>(this.apiConfig.api + '/posts', post);
+  }
+
+  deletePost(postID: string): Observable<PostDTO> {
+    return this.httpClient.delete<PostDTO>(this.apiConfig.api + '/posts/' + postID);
   }
 }
