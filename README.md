@@ -1,5 +1,4 @@
 # Blog Practice
-![Patri's blog](./client/src/assets/home-view.jpg)
 
 ## Project's goal
 We want to implement a service for **blog management with persistence and REST API**. Blog entries may have comments and avoid the publication of those that may be offensive, the service must include a offensive-words validator.
@@ -35,7 +34,6 @@ Also the blog has a `/myprofile` view to see your user profile data and your pos
 
 You can edit or delete only your posts and comments if you have "publisher role". 
 If you have "admin role" you have access to all blog functionalities.
-![profile view](./client/src/assets/profile-view.jpg)
 
 
 ## Default Users
@@ -104,6 +102,7 @@ From `server/` folder, run unit and API REST tests using:
 ### Client tests
 
 From `client/` folder, run unit tests using:
+
 `npm run test`
 
 ## Enjoy it :)
