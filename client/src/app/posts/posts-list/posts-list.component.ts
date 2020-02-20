@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Post } from '../post.model ';
 import { PostsStoreService } from '../posts-store.service';
@@ -11,10 +12,22 @@ import { PostsStoreService } from '../posts-store.service';
 export class PostsListComponent implements OnInit {
   posts$: Observable<Post[]>;
 
-  constructor(private store: PostsStoreService) { }
+  constructor(private store: PostsStoreService, private router: Router) { }
 
   ngOnInit(): void {
     this.store.init();
     this.posts$ = this.store.get$();
+  }
+
+  onNavigate(path: string) {
+    this.router.navigate([path]);
+  }
+
+  async onDelete(postID: string) {
+    try {
+      await this.store.deletePost$(postID);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
