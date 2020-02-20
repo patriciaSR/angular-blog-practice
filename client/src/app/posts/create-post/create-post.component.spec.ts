@@ -53,5 +53,22 @@ describe('CreatePostComponent', () => {
 
     // Nav to post/id test ??
   });
+
+  it('should  call updatePost service and navigate to new post created path', () => {
+    const updatePost = {
+      _id: '123',
+      title: 'hola',
+      content: 'hola'
+    };
+
+    const spyService = spyOn(TestBed.inject(PostsStoreService), 'updatePost$');
+    // .and.returnValue(Promise.resolve(createdPost));
+
+    component.onUpdatePost();
+
+    expect(spyService).toHaveBeenCalled();
+
+    // Nav to post/id test ??
+  });
 });
 
