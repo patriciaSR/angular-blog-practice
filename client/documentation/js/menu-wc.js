@@ -55,16 +55,38 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/AppModule.html" data-type="entity-link">AppModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-AppModule-9f24a9fe3424f9d10b1cef89ff6a4f3d"' : 'data-target="#xs-components-links-module-AppModule-9f24a9fe3424f9d10b1cef89ff6a4f3d"' }>
+                                            'data-target="#components-links-module-AppModule-00ada48dc0857ce4c43478b1bb67381f"' : 'data-target="#xs-components-links-module-AppModule-00ada48dc0857ce4c43478b1bb67381f"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AppModule-9f24a9fe3424f9d10b1cef89ff6a4f3d"' :
-                                            'id="xs-components-links-module-AppModule-9f24a9fe3424f9d10b1cef89ff6a4f3d"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AppModule-00ada48dc0857ce4c43478b1bb67381f"' :
+                                            'id="xs-components-links-module-AppModule-00ada48dc0857ce4c43478b1bb67381f"' }>
                                             <li class="link">
                                                 <a href="components/AppComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">AppComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/AuthModule.html" data-type="entity-link">AuthModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-AuthModule-2aca88be3e64dbd981dae11904b5e297"' : 'data-target="#xs-components-links-module-AuthModule-2aca88be3e64dbd981dae11904b5e297"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AuthModule-2aca88be3e64dbd981dae11904b5e297"' :
+                                            'id="xs-components-links-module-AuthModule-2aca88be3e64dbd981dae11904b5e297"' }>
+                                            <li class="link">
+                                                <a href="components/LoginComponent.html"
+                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">LoginComponent</a>
+                                            </li>
+                                            <li class="link">
+                                                <a href="components/SignupComponent.html"
+                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">SignupComponent</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -113,13 +135,17 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/PostsModule.html" data-type="entity-link">PostsModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-PostsModule-9a3cf0320ed30355b7124ca157991ca9"' : 'data-target="#xs-components-links-module-PostsModule-9a3cf0320ed30355b7124ca157991ca9"' }>
+                                            'data-target="#components-links-module-PostsModule-4e6e9615a21a0d883b2c7ed96dabe309"' : 'data-target="#xs-components-links-module-PostsModule-4e6e9615a21a0d883b2c7ed96dabe309"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PostsModule-9a3cf0320ed30355b7124ca157991ca9"' :
-                                            'id="xs-components-links-module-PostsModule-9a3cf0320ed30355b7124ca157991ca9"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PostsModule-4e6e9615a21a0d883b2c7ed96dabe309"' :
+                                            'id="xs-components-links-module-PostsModule-4e6e9615a21a0d883b2c7ed96dabe309"' }>
+                                            <li class="link">
+                                                <a href="components/CreatePostComponent.html"
+                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">CreatePostComponent</a>
+                                            </li>
                                             <li class="link">
                                                 <a href="components/PostDetailComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">PostDetailComponent</a>
@@ -144,6 +170,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <li class="link">
                                 <a href="classes/AppPage.html" data-type="entity-link">AppPage</a>
                             </li>
+                            <li class="link">
+                                <a href="classes/Store.html" data-type="entity-link">Store</a>
+                            </li>
                         </ul>
                     </li>
                         <li class="chapter">
@@ -155,13 +184,35 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </div>
                             <ul class="links collapse " ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
                                 <li class="link">
+                                    <a href="injectables/LoginService.html" data-type="entity-link">LoginService</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/PostsProxyService.html" data-type="entity-link">PostsProxyService</a>
                                 </li>
                                 <li class="link">
                                     <a href="injectables/PostsService.html" data-type="entity-link">PostsService</a>
                                 </li>
+                                <li class="link">
+                                    <a href="injectables/PostsStoreService.html" data-type="entity-link">PostsStoreService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/SignupService.html" data-type="entity-link">SignupService</a>
+                                </li>
                             </ul>
                         </li>
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#interceptors-links"' :
+                            'data-target="#xs-interceptors-links"' }>
+                            <span class="icon ion-ios-swap"></span>
+                            <span>Interceptors</span>
+                            <span class="icon ion-ios-arrow-down"></span>
+                        </div>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="interceptors-links"' : 'id="xs-interceptors-links"' }>
+                            <li class="link">
+                                <a href="interceptors/AuthInterceptorService.html" data-type="entity-link">AuthInterceptorService</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#interfaces-links"' :
                             'data-target="#xs-interfaces-links"' }>
@@ -171,10 +222,34 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
                             <li class="link">
-                                <a href="interfaces/Posts.html" data-type="entity-link">Posts</a>
+                                <a href="interfaces/ComentUserInfo.html" data-type="entity-link">ComentUserInfo</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/PostsDTO.html" data-type="entity-link">PostsDTO</a>
+                                <a href="interfaces/ComentUserInfoDTO.html" data-type="entity-link">ComentUserInfoDTO</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Comment.html" data-type="entity-link">Comment</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/CommentDTO.html" data-type="entity-link">CommentDTO</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Post.html" data-type="entity-link">Post</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/PostDTO.html" data-type="entity-link">PostDTO</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/PostUserInfo.html" data-type="entity-link">PostUserInfo</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/PostUserInfoDTO.html" data-type="entity-link">PostUserInfoDTO</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/TokenDTO.html" data-type="entity-link">TokenDTO</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/UserData.html" data-type="entity-link">UserData</a>
                             </li>
                         </ul>
                     </li>

@@ -242,6 +242,8 @@ export class AppLayoutComponent implements OnInit {
 &lt;nav&gt;
   &lt;a [routerLink]&#x3D;&quot;[&#x27;/home&#x27;]&quot;&gt;Home/ &lt;/a&gt;
   &lt;a [routerLink]&#x3D;&quot;[&#x27;/posts&#x27;]&quot;&gt;Posts/ &lt;/a&gt;
+  &lt;a [routerLink]&#x3D;&quot;[&#x27;/login&#x27;]&quot;&gt;Login/ &lt;/a&gt;
+  &lt;a [routerLink]&#x3D;&quot;[&#x27;/signup&#x27;]&quot;&gt;Sign up/ &lt;/a&gt;
 &lt;/nav&gt;
 
 &lt;router-outlet&gt;&lt;/router-outlet&gt;
@@ -280,8 +282,8 @@ export class AppLayoutComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><p>app-layout works!</p><nav>  <a [routerLink]="[\'/home\']">Home/ </a>  <a [routerLink]="[\'/posts\']">Posts/ </a></nav><router-outlet></router-outlet></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppLayoutComponent', 'selector': 'app-app-layout'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'PostDetailComponent', 'selector': 'app-post-detail'},{'name': 'PostsListComponent', 'selector': 'app-posts-list'},{'name': 'SimpleLayoutComponent', 'selector': 'app-simple-layout'}];
+        var COMPONENT_TEMPLATE = '<div><p>app-layout works!</p><nav>  <a [routerLink]="[\'/home\']">Home/ </a>  <a [routerLink]="[\'/posts\']">Posts/ </a>  <a [routerLink]="[\'/login\']">Login/ </a>  <a [routerLink]="[\'/signup\']">Sign up/ </a></nav><router-outlet></router-outlet></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppLayoutComponent', 'selector': 'app-app-layout'},{'name': 'CreatePostComponent', 'selector': 'app-create-post'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'PostDetailComponent', 'selector': 'app-post-detail'},{'name': 'PostsListComponent', 'selector': 'app-posts-list'},{'name': 'SignupComponent', 'selector': 'app-signup'},{'name': 'SimpleLayoutComponent', 'selector': 'app-simple-layout'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AppLayoutComponent'};
 </script>

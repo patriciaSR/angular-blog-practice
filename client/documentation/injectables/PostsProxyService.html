@@ -76,7 +76,19 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#getPosts">getPosts</a>
+                                <a href="#createPost$">createPost$</a>
+                            </li>
+                            <li>
+                                <a href="#deletePost$">deletePost$</a>
+                            </li>
+                            <li>
+                                <a href="#getPostById$">getPostById$</a>
+                            </li>
+                            <li>
+                                <a href="#getPosts$">getPosts$</a>
+                            </li>
+                            <li>
+                                <a href="#putPost$">putPost$</a>
                             </li>
                         </ul>
                     </td>
@@ -160,18 +172,228 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getPosts"></a>
+                    <a name="createPost$"></a>
                     <span class="name">
                         <b>
-                            getPosts
+                            createPost$
                         </b>
-                        <a href="#getPosts"><span class="icon ion-ios-link"></span></a>
+                        <a href="#createPost$"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getPosts()</code>
+<code>createPost$(post: <a href="../interfaces/PostDTO.html">PostDTO</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="21"
+                            class="link-to-prism">src/app/posts/posts-proxy.service.ts:21</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>post</td>
+                                    <td>
+                                                <code><a href="../interfaces/PostDTO.html" target="_self" >PostDTO</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;PostDTO&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deletePost$"></a>
+                    <span class="name">
+                        <b>
+                            deletePost$
+                        </b>
+                        <a href="#deletePost$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deletePost$(postID: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">src/app/posts/posts-proxy.service.ts:25</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>postID</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;PostDTO&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPostById$"></a>
+                    <span class="name">
+                        <b>
+                            getPostById$
+                        </b>
+                        <a href="#getPostById$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getPostById$(postID: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="17"
+                            class="link-to-prism">src/app/posts/posts-proxy.service.ts:17</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>postID</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;PostDTO&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPosts$"></a>
+                    <span class="name">
+                        <b>
+                            getPosts$
+                        </b>
+                        <a href="#getPosts$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getPosts$()</code>
                 </td>
             </tr>
 
@@ -188,8 +410,90 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;PostsDTO[]&gt;</code>
+                        <b>Returns : </b>    <code>Observable&lt;PostDTO[]&gt;</code>
 
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="putPost$"></a>
+                    <span class="name">
+                        <b>
+                            putPost$
+                        </b>
+                        <a href="#putPost$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>putPost$(postID: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, post: <a href="../interfaces/PostDTO.html">PostDTO</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/app/posts/posts-proxy.service.ts:29</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>postID</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>post</td>
+                                    <td>
+                                                <code><a href="../interfaces/PostDTO.html" target="_self" >PostDTO</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;PostDTO&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -204,7 +508,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient } from &#x27;@angular/common/http&#x27;;
 import { Inject, Injectable } from &#x27;@angular/core&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
-import { PostsDTO } from &#x27;./posts-dto.model&#x27;;
+import { PostDTO } from &#x27;./post-dto.model&#x27;;
 
 @Injectable({
   providedIn: &#x27;root&#x27;
@@ -213,8 +517,24 @@ export class PostsProxyService {
 
   constructor(private httpClient: HttpClient, @Inject(&#x27;apiConfig&#x27;) private apiConfig: any) { }
 
-  getPosts(): Observable&lt;PostsDTO[]&gt; {
-    return this.httpClient.get&lt;PostsDTO[]&gt;(this.apiConfig.api + &#x27;/posts&#x27;);
+  getPosts$(): Observable&lt;PostDTO[]&gt; {
+    return this.httpClient.get&lt;PostDTO[]&gt;(this.apiConfig.api + &#x27;/posts&#x27;);
+  }
+
+  getPostById$(postID: string): Observable&lt;PostDTO&gt; {
+    return this.httpClient.get&lt;PostDTO&gt;(this.apiConfig.api + &#x27;/posts/&#x27; + postID);
+  }
+
+  createPost$(post: PostDTO): Observable&lt;PostDTO&gt; {
+    return this.httpClient.post&lt;PostDTO&gt;(this.apiConfig.api + &#x27;/posts&#x27;, post);
+  }
+
+  deletePost$(postID: string): Observable&lt;PostDTO&gt; {
+    return this.httpClient.delete&lt;PostDTO&gt;(this.apiConfig.api + &#x27;/posts/&#x27; + postID);
+  }
+
+  putPost$(postID: string, post: PostDTO): Observable&lt;PostDTO&gt; {
+    return this.httpClient.put&lt;PostDTO&gt;(this.apiConfig.api + &#x27;/posts/&#x27; + postID, post);
   }
 }
 </code></pre>
