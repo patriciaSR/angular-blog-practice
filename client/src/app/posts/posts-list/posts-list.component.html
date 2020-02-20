@@ -1,6 +1,6 @@
 <p>posts-list works!</p>
 <h2>Post List</h2>
-<ol class="posts__list">
+<ol class="posts__list" *ngIf="posts$; else noPost">
   <li class="posts-list__item" *ngFor="let post of (posts$ | async)" id="post._id">
     <a class="post_link" [routerLink]="'/posts/' + post._id">
       <h3 class="post__title">{{ post.title }}</h3>
@@ -8,3 +8,7 @@
     </a>
   </li>
 </ol>
+
+<ng-template #noPost>No posts yet. Create a new post
+  <a [routerLink]="['/newpost']">here >></a>
+</ng-template>

@@ -44,7 +44,7 @@ const ROUTES: Routes = [
       { path: 'signup', component: SignupComponent },
     ]
   },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'home' }
 ];
 
 

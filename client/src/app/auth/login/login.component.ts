@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -10,7 +10,7 @@ import { TokenDTO } from '../token.dto';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit {
   form: FormGroup;
   userToken: TokenDTO;
   sub: Subscription;
@@ -39,9 +39,5 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.errorText = 'invalid username or password';
         console.log(error);
       });
-  }
-
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
   }
 }
