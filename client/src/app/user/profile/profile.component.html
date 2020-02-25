@@ -7,29 +7,35 @@
     <h3 class="username"><strong>Username:</strong>{{ userData.username }}</h3>
     <h3 class="name"><strong>Name:</strong>{{ userData.firstname }} {{userData.lastname}}</h3>
   </div>
-</div>
 
-<ol class="post-list" *ngIf="userPosts, else noPosts">
-  <li class="post-list__item" *ngFor="let post of userPosts" id="post._id">
-    <div class="post__container">
-      <h3 class="post__title">{{ post.title }}</h3>
-      <p class="date">{{ post.date | date }}</p>
+  <h2>Your Posts</h2>
 
-      <div *ngIf="userLogin; else noLogin">
-        <button (click)="onDelete(post._id)">Delete Post</button>
-        <button (click)="onNavigate('newpost/', post._id)">Update Post</button>
+  <ol class="post-list" *ngIf="userPosts, else noPosts">
+    <li class="post-list__item" *ngFor="let post of userPosts" id="post._id">
+      <div class="post__container">
+        <a class="post_link" [routerLink]="'/posts/' + post._id">
+          <h3 class="post__title">{{ post.title }}</h3>
+          <p class="date">{{ post.date | date }}</p>
+        </a>
+
+        <div *ngIf="userLogin; else noLogin">
+          <button (click)="onDelete(post._id)">Delete Post</button>
+          <button (click)="onNavigate('newpost/', post._id)">Update Post</button>
+        </div>
       </div>
-    </div>
-  </li>
-</ol>
+    </li>
+  </ol>
+
+  <ng-template #noPosts>You dont have any post yet!. Create your first post
+    <a [routerLink]="['/newpost']">here >></a>
+  </ng-template>
+</div>
 
 <ng-template class="noLogin" #noLogin>
   To see your profile, please Login first
   <a class="nav__link" [routerLink]="['/login']">here >></a>
 </ng-template>
 
-<ng-template #noPosts>You dont have any post yet!. Create your first post
-  <a [routerLink]="['/newpost']">here >></a>
-</ng-template>
+
 
 <router-outlet></router-outlet>
