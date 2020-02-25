@@ -29,6 +29,7 @@ export class CreatePostComponent implements OnInit {
     this.form = new FormGroup({
       title: new FormControl('', [Validators.required]),
       content: new FormControl('', [Validators.required]),
+      imageName: new FormControl(''),
       image: new FormControl(''),
     });
 
@@ -56,5 +57,18 @@ export class CreatePostComponent implements OnInit {
     await this.store.updatePost$(this.postID, newPost);
 
     this.router.navigate([`posts/${this.postID}`]);
+  }
+
+  handleUploadImage(ev) {
+    const file = ev.target.files[0];
+    if (!file) { return; }
+
+    this.form.get('imageName').setValue('hola');
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (ev) => {
+      this.form.value.image = ev.target.result;
+    };
   }
 }

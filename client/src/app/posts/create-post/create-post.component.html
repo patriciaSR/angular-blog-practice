@@ -18,8 +18,8 @@
   </div>
 
   <label for="image">
-    ImageURL:
-    <input name="image" type="text" formControlName="image">
+    Image file:
+    <input name="image" id="file" type="file" formControlName="image" (change)="handleUploadImage($event)">
   </label>
 
   <button *ngIf="postID; else newPost" (click)="onUpdatePost()">Update Post</button>
