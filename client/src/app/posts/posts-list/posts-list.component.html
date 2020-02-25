@@ -2,7 +2,7 @@
 <h2 class="post-list__title">Post List</h2>
 
 <button
-  *ngIf="userToken; else noLogin"
+  *ngIf="userLogin; else noLogin"
   (click)="onNavigate('newpost', '')"
   >New Post +
 </button>
@@ -22,7 +22,7 @@
         <p class="date">{{ post.date | date }}</p>
       </a>
 
-      <div *ngIf="userToken">
+      <div *ngIf="userLogin">
         <button (click)="onDelete(post._id)">Delete Post</button>
         <button (click)="onNavigate('newpost/', post._id)">Update Post</button>
       </div>
