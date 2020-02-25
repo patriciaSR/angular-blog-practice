@@ -27,7 +27,10 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.userLogin = this.userStore.isLogin();
-    this.userData = this.userStore.getUserData().userData;
+
+    if (this.userLogin) {
+      this.userData = this.userStore.getUserData().userData;
+    }
 
     this.sub = this.postsService.getPostsByUserId(this.userData._id).subscribe(
       (response) => this.userPosts = response,

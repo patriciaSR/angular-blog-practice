@@ -13,7 +13,6 @@ import { PostsStoreService } from '../posts-store.service';
 export class PostsListComponent implements OnInit {
   posts$: Observable<Post[]>;
   userLogin: boolean;
-  userData: object;
 
   constructor(
     private userStore: UserStoreService,
@@ -24,7 +23,6 @@ export class PostsListComponent implements OnInit {
     this.store.init();
     this.posts$ = this.store.get$();
     this.userLogin = this.userStore.isLogin();
-    this.userData = this.userStore.getUserData();
   }
 
   onNavigate(path: string, id: string) {
