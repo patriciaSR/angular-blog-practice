@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AppLayoutComponent } from './app-layout.component';
+
 
 describe('AppLayoutComponent', () => {
   let component: AppLayoutComponent;
@@ -21,5 +21,11 @@ describe('AppLayoutComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should set userLogin', () => {
+    component.ngOnInit();
+    expect(component.userLogin).toBeDefined();
+    expect(typeof component.userLogin).toEqual('boolean');
   });
 });
