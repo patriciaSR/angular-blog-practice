@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserStoreService } from 'src/app/user/user-store.service';
 
 @Component({
   selector: 'app-app-layout',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app-layout.component.css']
 })
 export class AppLayoutComponent implements OnInit {
-
-  constructor() { }
+  userLogin: boolean;
+  constructor(private userStore: UserStoreService) { }
 
   ngOnInit(): void {
+    this.userLogin = this.userStore.isLogin();
   }
 
 }

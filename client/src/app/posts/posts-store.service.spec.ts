@@ -1,70 +1,60 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { Store } from '../state/store';
+import { FAKE_POST } from './post-fake.spec';
 import { FAKE_POSTS } from './posts-fake.spec';
 import { PostsStoreService } from './posts-store.service';
 import { PostsService } from './posts.service';
 
 const apiConfig = {
-  api: 'https://localhost:3443'
+  api: 'https://localhost:3443/'
 };
+
+const FAKE_ID = '1234567';
+
 
 describe('PostsStoreService', () => {
   let service: PostsStoreService;
 
-  const newPost = {
-    title: 'hola soy dumbo111',
-    content: 'hola soy dumbo111'
-  };
-
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [{ provide: 'apiConfig', useValue: apiConfig }, Store]
+      providers: [
+        PostsService,
+        { provide: 'apiConfig', useValue: apiConfig },
+      ]
     });
     service = TestBed.inject(PostsStoreService);
+
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return a Promise<Post[]> on init()', async () => {
+  it('when calling init() should call getPosts from service', () => {
     const spyService = spyOn(TestBed.inject(PostsService), 'getPosts').and.callFake(() => of(FAKE_POSTS));
-
-    await service.init();
-
+    service.init();
     expect(spyService).toHaveBeenCalled();
   });
 
-  // it('should return a Promise<PostDTO> on createPost()', async () => {
-  //   const spyService = spyOn(TestBed.inject(PostsService), 'createPost').and.callFake(() => of(FAKE_POST));
-  //   const spyStore = spyOn(TestBed.inject(Store), 'get').and.returnValue(FAKE_POSTS);
+  it('when calling createPost$ should call createPost from service', () => {
 
-  //   await service.createPost$(newPost);
+    const spyService = spyOn(TestBed.inject(PostsService), 'createPost').and.callFake(() => of(FAKE_POST));
+    service.createPost$(FAKE_POST);
+    expect(spyService).toHaveBeenCalled();
+  });
+  it('when calling deletePost$ should call deletePost from service', () => {
 
-  //   expect(spyStore).toHaveBeenCalled();
-  //   expect(spyService).toHaveBeenCalled();
-  // });
+    const spyService = spyOn(TestBed.inject(PostsService), 'deletePost').and.callFake(() => of(FAKE_POST));
+    service.deletePost$(FAKE_ID);
+    expect(spyService).toHaveBeenCalled();
+  });
 
-  // it('should return a Promise<PostDTO> on deletePost()', async () => {
-  //   const spyService = spyOn(TestBed.inject(PostsService), 'deletePost').and.callFake(() => of(FAKE_POST));
-  //   const id = '5e31d951bcdbf849883e9bd0';
+  it('when calling updatePost$ should call updatePost from service', () => {
 
-  //   await service.deletePost$(id);
-
-  //   expect(spyService).toHaveBeenCalled();
-  // });
-
-  // it('should return a Promise<PostDTO> on updatePost()', async () => {
-  //   const spyService = spyOn(TestBed.inject(PostsService), 'updatePost').and.callFake(() => of(FAKE_POST));
-  //   const spyStore = spyOn(TestBed.inject(Store), 'get').and.returnValue(FAKE_POSTS);
-
-  //   const id = '5e31d951bcdbf849883e9bd0';
-
-  //   await service.updatePost$(id, newPost);
-
-  //   expect(spyService).toHaveBeenCalled();
-  // });
+    const spyService = spyOn(TestBed.inject(PostsService), 'updatePost').and.callFake(() => of(FAKE_POST));
+    service.updatePost$(FAKE_ID, FAKE_POST);
+    expect(spyService).toHaveBeenCalled();
+  });
 });

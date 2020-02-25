@@ -1,1 +1,31 @@
 <p>home works!</p>
+
+<img src="../assets/logo-rocket.png" />
+<h1 class="">Welcome to Patri's Blog</h1>
+
+<div *ngIf='userLogin, else noLogin'>
+  <p class="">Welcome <span class="username__text">@{{userData.username}}</span></p>
+
+  <div>
+    <a class="btn" [routerLink]="['/myprofile']">My Profile</a>
+    <a class="btn" [routerLink]="['/posts']">View Posts</a>
+  </div>
+
+  <a class="btn" [routerLink]="['/newpost']">New Post</a>
+</div>
+
+<ng-template #noLogin>
+  <div>
+    <p class="">For create new posts and comments you need sign in.</p>
+
+    <div>
+      <a class="btn" [routerLink]="['/login']">Login</a>
+      <a class="btn" [routerLink]="['/signup']">Sign up</a>
+    </div>
+
+    <p class="">You can read posts and comments freely.</p>
+    <a class="btn" [routerLink]="['/posts']">View Posts</a>
+  </div>
+</ng-template>
+
+<router-outlet></router-outlet>

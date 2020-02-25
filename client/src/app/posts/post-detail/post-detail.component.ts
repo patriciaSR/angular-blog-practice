@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { UserStoreService } from 'src/app/user/user-store.service';
 import { Post } from '../post.model ';
 import { PostsStoreService } from '../posts-store.service';
 import { PostsService } from '../posts.service';
@@ -12,19 +13,21 @@ import { PostsService } from '../posts.service';
 })
 export class PostDetailComponent implements OnInit, OnDestroy {
   postInfo: Post;
-  userToken: string;
+  userLogin: boolean;
   id: string;
   sub: Subscription;
+  userData: object;
 
   constructor(
     private store: PostsStoreService,
+    private userStore: UserStoreService,
     private postsService: PostsService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.userToken = sessionStorage.getItem('userToken');
+    this.userLogin = this.userStore.isLogin();
     this.activatedRoute.params.subscribe((params) => {
       this.id = params.id;
     });

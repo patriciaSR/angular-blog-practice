@@ -18,7 +18,7 @@
     </li>
   </ol>
 
-  <div *ngIf="userToken; else noLogin">
+  <div *ngIf="userLogin; else noLogin">
     <button (click)="onDelete(postInfo._id)">Delete Post</button>
     <button (click)="onNavigate('newpost/', postInfo._id)">Update Post</button>
   </div>
