@@ -1,6 +1,7 @@
 <p>post-detail works!</p>
 <div class="post__container" *ngIf="postInfo, else noPost">
   <div class="post__content">
+    <img class="post__image" [src]="postInfo.image || defaultPostImage" [alt]="postInfo.title">
     <h2>{{ postInfo.title }}</h2>
     <h3 class="username">{{ postInfo.userInfo.username }}</h3>
 

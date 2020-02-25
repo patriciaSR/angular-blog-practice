@@ -35,7 +35,7 @@ describe('CreatePostComponent', () => {
       declarations: [CreatePostComponent],
       providers: [
         { provide: 'apiConfig', useValue: apiConfig },
-        { provide: ActivatedRoute, useValue: fakeActivatedRoute}
+        { provide: ActivatedRoute, useValue: fakeActivatedRoute }
       ]
     })
       .compileComponents();

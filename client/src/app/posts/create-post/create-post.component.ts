@@ -61,6 +61,7 @@ export class CreatePostComponent implements OnInit {
 
   handleUploadImage(ev) {
     const file = ev.target.files[0];
+    console.log(file);
     if (!file) { return; }
 
     this.form.get('imageName').setValue('hola');

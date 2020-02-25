@@ -6,6 +6,7 @@ import { Post } from '../post.model ';
 import { PostsStoreService } from '../posts-store.service';
 import { PostsService } from '../posts.service';
 
+
 @Component({
   selector: 'app-post-detail',
   templateUrl: './post-detail.component.html',
@@ -17,6 +18,7 @@ export class PostDetailComponent implements OnInit, OnDestroy {
   id: string;
   sub: Subscription;
   userData: object;
+  defaultPostImage = '../../../assets/defaultPostImage.jpg';
 
   constructor(
     private store: PostsStoreService,
