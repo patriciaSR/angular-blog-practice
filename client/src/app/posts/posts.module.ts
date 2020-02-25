@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthInterceptorService } from '../auth/auth-interceptor.service';
+import { MaterialUiModule } from '../material-ui/material-ui.module';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { PostsListComponent } from './posts-list/posts-list.component';
@@ -18,7 +19,8 @@ const ROUTES: Routes = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule.forChild(ROUTES)
+    RouterModule.forChild(ROUTES),
+    MaterialUiModule
   ],
   providers: [
     {

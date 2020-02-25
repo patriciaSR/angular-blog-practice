@@ -1,6 +1,7 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
@@ -63,6 +64,7 @@ const ROUTES: Routes = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     LayoutsModule,
     AuthModule,
     HttpClientModule,
