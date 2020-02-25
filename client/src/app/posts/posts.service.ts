@@ -39,6 +39,24 @@ export class PostsService {
     );
   }
 
+  getPostsByUserId(userID: string): Observable<Post[]> {
+    return this.proxy.getPostByUserId$(userID).pipe(
+      map((postsDTO: PostDTO[]) => {
+        let posts: Post[] = [];
+        postsDTO.map((postDTO: PostDTO) => {
+          const post: Post = {
+            _id: postDTO._id,
+            title: postDTO.title,
+            date: postDTO.date,
+            content: postDTO.content
+          };
+          posts = [...posts, post];
+        });
+        return posts;
+      })
+    );
+  }
+
   createPost(post: Post): Observable<Post> {
     return this.proxy.createPost$(post).pipe(
       map((postResult: PostDTO) => {

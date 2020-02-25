@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { UserStoreService } from 'src/app/state/user-store.service';
+import { UserStoreService } from 'src/app/user/user-store.service';
 import { LoginService } from '../login.service';
 import { TokenDTO } from '../token.dto';
 
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
         this.userToken = response;
         this.userStore.saveUserData(response);
 
-        this.router.navigate(['posts']);
+        this.router.navigate(['myprofile']);
       },
       (error) => {
         this.errorText = 'invalid username or password';

@@ -48,7 +48,7 @@ describe('UserStoreService', () => {
 
     const result = service.isLogin();
     expect(spySession).toHaveBeenCalled();
-    expect(spySession).toHaveBeenCalledWith('userToken');
+    expect(spySession).toHaveBeenCalledWith('userData');
     expect(result).toBe(true);
   });
 
@@ -57,7 +57,7 @@ describe('UserStoreService', () => {
 
     const result = service.isLogin();
     expect(spySession).toHaveBeenCalled();
-    expect(spySession).toHaveBeenCalledWith('userToken');
+    expect(spySession).toHaveBeenCalledWith('userData');
     expect(result).toBe(false);
   });
 

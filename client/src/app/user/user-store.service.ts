@@ -23,19 +23,21 @@ export class UserStoreService extends Store<User> {
   }
 
   isLogin(): boolean {
-    if (sessionStorage.getItem('userToken')) {
+    const userData = sessionStorage.getItem('userData');
+    if (userData) {
+      this.store(JSON.parse(userData));
       return true;
     }
 
     return false;
   }
 
-  getUserData(): object {
+  getUserData(): User {
     return this.get();
   }
 
   saveUserData(userData: User) {
-    sessionStorage.setItem('userToken', userData.token);
+    sessionStorage.setItem('userData', JSON.stringify(userData));
     this.store(userData);
   }
 

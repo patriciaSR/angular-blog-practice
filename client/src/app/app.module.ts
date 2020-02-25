@@ -27,6 +27,11 @@ const ROUTES: Routes = [
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
       },
       {
+        path: 'myprofile',
+        loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+      },
+
+      {
         path: 'posts',
         loadChildren: () => import('./posts/posts.module').then(m => m.PostsModule)
       },
@@ -38,7 +43,7 @@ const ROUTES: Routes = [
         path: 'newpost/:id',
         component: CreatePostComponent
       }
-  ]
+    ]
   },
   {
     path: '',

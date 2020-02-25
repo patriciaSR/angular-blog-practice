@@ -18,6 +18,10 @@ export class PostsProxyService {
     return this.httpClient.get<PostDTO>(this.apiConfig.api + '/posts/' + postID);
   }
 
+  getPostByUserId$(userID: string): Observable<PostDTO[]> {
+    return this.httpClient.get<PostDTO[]>(this.apiConfig.api + '/posts/user/' + userID);
+  }
+
   createPost$(post: PostDTO): Observable<PostDTO> {
     return this.httpClient.post<PostDTO>(this.apiConfig.api + '/posts', post);
   }
