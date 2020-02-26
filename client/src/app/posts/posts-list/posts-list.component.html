@@ -1,36 +1,35 @@
-<p>posts-list works!</p>
-<h2 class="post-list__title">Post List</h2>
+<mat-card class="post-list__container">
+  <h2 class="post-list__title">Post List</h2>
 
-<button
-  *ngIf="userLogin; else noLogin"
-  (click)="onNavigate('newpost', '')"
-  mat-raised-button color="primary"
-  >New Post +
-</button>
+  <button *ngIf="userLogin; else noLogin" (click)="onNavigate('newpost', '')" mat-raised-button color="primary">New Post
+    +
+  </button>
 
-<ng-template class="noLogin" #noLogin>
-  To create, update or delete post, please Login first
-  <a class="nav__link" [routerLink]="['/login']">here >></a>
-</ng-template>
+  <ng-template class="noLogin" #noLogin>
+    To create, update or delete post, please Login first
+    <a class="nav__link" [routerLink]="['/login']">here >></a>
+  </ng-template>
 
-<ol class="posts__list" *ngIf="posts$; else noPost">
-  <li
-    class="posts-list__item"
-    *ngFor="let post of (posts$ | async)"
-    id="post._id">
-      <a class="post_link" [routerLink]="'/posts/' + post._id">
-        <h3 class="post__title">{{ post.title }}</h3>
-        <p class="date">{{ post.date | date }}</p>
-      </a>
+  <mat-grid-list class="posts__list" *ngIf="posts$; else noPost" cols="1" gutterSize="20px" rowHeight="400px">
+    <mat-grid-tile *ngFor="let post of (posts$ | async)" id="post._id" colspan="1">
+      <mat-card class="posts-list__item">
+        <a class="post_link" [routerLink]="'/posts/' + post._id">
+          <mat-card-title class="post__title">{{ post.title }}</mat-card-title>
+          <p class="date">{{ post.date | date }}</p>
+          <img mat-card-image [src]="post.image || defaultPostImage" [alt]="post.title">
+        </a>
 
-      <div *ngIf="userLogin">
-        <button (click)="onDelete(post._id)">Delete Post</button>
-        <button (click)="onNavigate('newpost/', post._id)">Update Post</button>
-      </div>
-  </li>
-</ol>
+        <div class="btn__container" *ngIf="userLogin">
+          <button class="btn" (click)="onDelete(post._id)" mat-raised-button color="primary">Delete Post</button>
+          <button class="btn" (click)="onNavigate('newpost/', post._id)" mat-raised-button color="primary">Update
+            Post</button>
+        </div>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 
-<ng-template #noPost>
-  No posts yet. Create a new post
-  <a [routerLink]="['/newpost']">here >></a>
-</ng-template>
+  <ng-template #noPost>
+    No posts yet. Create a new post
+    <a [routerLink]="['/newpost']">here >></a>
+  </ng-template>
+</mat-card>

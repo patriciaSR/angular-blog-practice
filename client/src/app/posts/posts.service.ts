@@ -21,6 +21,7 @@ export class PostsService {
             _id: postDTO._id,
             title: postDTO.title,
             date: postDTO.date,
+            image: postDTO.image,
             content: postDTO.content
           };
           posts = [...posts, post];

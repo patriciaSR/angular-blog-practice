@@ -13,6 +13,7 @@ import { PostsStoreService } from '../posts-store.service';
 export class PostsListComponent implements OnInit {
   posts$: Observable<Post[]>;
   userLogin: boolean;
+  defaultPostImage = '../../../assets/defaultPostImage.jpg';
 
   constructor(
     private userStore: UserStoreService,
