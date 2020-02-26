@@ -1,40 +1,59 @@
-<p>profile works!</p>
-
-<div class="profile__container" *ngIf="userLogin, else noLogin">
+<mat-card class="profile__container" *ngIf="userLogin, else noLogin">
+  <img class="profile__image" [src]="defaultProfileImage" alt="profile-image">
   <div class="profile__content">
-    <h2>Hello, {{ userData.firstname }}</h2>
-    <img [src]="userData.image" [alt]="userData.username">
-    <h3 class="username"><strong>Username:</strong>{{ userData.username }}</h3>
-    <h3 class="name"><strong>Name:</strong>{{ userData.firstname }} {{userData.lastname}}</h3>
+    <mat-card-title>Hello, {{ userData.firstname }}</mat-card-title>
+    <div class="user__info">
+      <img mat-card-avatar [src]="userData.image || defaultAvatarImage">
+      <div class="info-text">
+        <mat-card-title class="username"><span>Username: </span>@{{ userData.username }}</mat-card-title>
+        <mat-card-title class="name"><span>Name: </span>{{ userData.firstname }} {{userData?.lastname}}
+        </mat-card-title>
+      </div>
+    </div>
+
+    <div class="btn__container">
+      <button class="btn" mat-raised-button color="primary" (click)="onNavigate('posts', '')">View Posts</button>
+      <button class="btn" mat-raised-button color="primary" (click)="onNavigate('newpost/', '')">New Post +</button>
+    </div>
   </div>
+</mat-card>
 
+<ng-template class="noLogin" #noLogin>
+  <mat-card>
+    To see your profile, please Login first
+    <a class="nav__link" [routerLink]="['/login']">here >></a>
+  </mat-card>
+</ng-template>
+
+<mat-card class="user-post__container">
   <h2>Your Posts</h2>
-
-  <ol class="post-list" *ngIf="userPosts, else noPosts">
-    <li class="post-list__item" *ngFor="let post of userPosts" id="post._id">
+  <mat-grid-list class="post-list" *ngIf="userPosts, else noPosts" cols="1" gutterSize="20px" rowHeight="150px">
+    <mat-grid-tile class="post-list__item" *ngFor="let post of userPosts" id="post._id" colspan="1">
       <div class="post__container">
         <a class="post_link" [routerLink]="'/posts/' + post._id">
-          <h3 class="post__title">{{ post.title }}</h3>
-          <p class="date">{{ post.date | date }}</p>
+          <img class="post__image" mat-card-avatar [src]="post.image || defaultPostImage" [alt]="post.title">
         </a>
+        <div>
+          <a class="post_link" [routerLink]="'/posts/' + post._id">
+            <mat-card-title class="post__title">{{ post.title }}</mat-card-title>
+            <mat-card-subtitle class="date">{{ post.date | date }}</mat-card-subtitle>
+          </a>
 
-        <div *ngIf="userLogin; else noLogin">
-          <button (click)="onDelete(post._id)">Delete Post</button>
-          <button (click)="onNavigate('newpost/', post._id)">Update Post</button>
+          <div *ngIf="userLogin; else noLogin">
+            <button mat-button color="primary" (click)="onDelete(post._id)">Delete Post</button>
+            <button mat-button color="primary" (click)="onNavigate('newpost/', post._id)">Update Post</button>
+          </div>
         </div>
       </div>
-    </li>
-  </ol>
+    </mat-grid-tile>
+  </mat-grid-list>
 
   <ng-template #noPosts>You dont have any post yet!. Create your first post
     <a [routerLink]="['/newpost']">here >></a>
   </ng-template>
-</div>
+</mat-card>
 
-<ng-template class="noLogin" #noLogin>
-  To see your profile, please Login first
-  <a class="nav__link" [routerLink]="['/login']">here >></a>
-</ng-template>
+
 
 
 

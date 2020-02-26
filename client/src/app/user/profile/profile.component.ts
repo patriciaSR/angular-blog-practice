@@ -17,6 +17,9 @@ export class ProfileComponent implements OnInit {
   userData: UserData;
   sub: Subscription;
   userPosts: Post[];
+  defaultPostImage = '../../../assets/defaultPostImage.jpg';
+  defaultProfileImage = 'https://i.pinimg.com/originals/11/3b/a4/113ba4f4a6ab9817069ca3a3bb4a1b1b.jpg';
+  defaultAvatarImage = '../../../assets/avatar-pengin.png';
 
   constructor(
     private userStore: UserStoreService,
