@@ -1,12 +1,46 @@
-<p>app-layout works!</p>
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
 
-<nav>
-  <a [routerLink]="['/home']">Home/ </a>
-  <a [routerLink]="['/myprofile']" *ngIf="userLogin">MyProfile/ </a>
+  <mat-toolbar class="menu-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+  </mat-toolbar>
 
-  <a [routerLink]="['/posts']">Posts/ </a>
-  <a [routerLink]="['/login']">Login/ </a>
-  <a [routerLink]="['/signup']">Sign up/ </a>
-</nav>
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+      <mat-nav-list>
+        <a mat-list-item [routerLink]="['/home']" *ngIf="!userLogin">
+          <mat-icon>home</mat-icon>
+          <div class="link__text">Home</div>
+        </a>
+        <a mat-list-item [routerLink]="['/myprofile']" *ngIf="userLogin">
+          <mat-icon>account_box</mat-icon>
+          <div class="link__text">My profile</div>
+        </a>
 
-<router-outlet></router-outlet>
+        <a mat-list-item [routerLink]="['/posts']">
+          <mat-icon>dashboard</mat-icon>
+          <div class="link__text">Posts</div>
+        </a>
+        <a mat-list-item [routerLink]="['/login']" *ngIf="!userLogin">
+          <mat-icon>input</mat-icon>
+          <div class="link__text">Login</div>
+
+        </a>
+        <a mat-list-item (click)="onLogout()" *ngIf="userLogin">
+          <mat-icon>logout</mat-icon>
+          <div class="link__text">Logout</div>
+        </a>
+
+        <a mat-list-item [routerLink]="['/signup']">
+          <mat-icon>assignment_ind</mat-icon>
+          <div class="link__text">Sign up</div>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+		</mat-sidenav-content>
+  </mat-sidenav-container>
+
+</div>

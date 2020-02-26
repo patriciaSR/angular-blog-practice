@@ -19,8 +19,8 @@ const ROUTES: Routes = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule.forChild(ROUTES),
-    MaterialUiModule
+    MaterialUiModule,
+    RouterModule.forChild(ROUTES)
   ],
   providers: [
     {
