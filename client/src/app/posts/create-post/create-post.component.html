@@ -1,30 +1,29 @@
-<p>create-post works!</p>
+<mat-card class="post__container">
+  <form [formGroup]="form">
+    <label for="firstname">
+      Title:
+      <input name="title" type="text" formControlName="title">
+    </label>
+    <div class="errorText" *ngIf="form.get('title').dirty && !form.get('title').valid">
+      <p *ngIf="form.get('title').hasError('required')">Debes poner un título</p>
+    </div>
 
-<form [formGroup]="form">
-  <label for="firstname">
-    Title:
-    <input name="title" type="text" formControlName="title">
-  </label>
-  <div class="errorText" *ngIf="form.get('title').dirty && !form.get('title').valid">
-    <p *ngIf="form.get('title').hasError('required')">Debes poner un título</p>
-  </div>
+    <label for="content">
+      Content:
+      <textarea name="content" formControlName="content" rows="4" cols="50"></textarea>
+    </label>
+    <div class="errorText" *ngIf="form.get('content').dirty && !form.get('content').valid">
+      <p *ngIf="form.get('content').hasError('required')">Debes poner un contenido a tu post</p>
+    </div>
 
-  <label for="content">
-    Content:
-    <textarea name="content" formControlName="content" rows="4" cols="50"></textarea>
-  </label>
-  <div class="errorText" *ngIf="form.get('content').dirty && !form.get('content').valid">
-    <p *ngIf="form.get('content').hasError('required')">Debes poner un contenido a tu post</p>
-  </div>
+    <label for="image">
+      Image file:
+      <input name="image" id="file" type="file" formControlName="image" (change)="handleUploadImage($event)">
+    </label>
 
-  <label for="image">
-    Image file:
-    <input name="image" id="file" type="file" formControlName="image" (change)="handleUploadImage($event)">
-  </label>
-
-  <button *ngIf="postID; else newPost" (click)="onUpdatePost()">Update Post</button>
-  <ng-template #newPost>
-    <button (click)="onSendPost()" [disabled]="!form.valid">Create Post</button>
-  </ng-template>
-
-</form>
+    <button *ngIf="postID; else newPost" (click)="onUpdatePost()">Update Post</button>
+    <ng-template #newPost>
+      <button (click)="onSendPost()" [disabled]="!form.valid">Create Post</button>
+    </ng-template>
+  </form>
+</mat-card>

@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserStoreService } from 'src/app/user/user-store.service';
+import { UserData } from 'src/app/user/user.model ';
 import { Post } from '../post.model ';
 import { PostsStoreService } from '../posts-store.service';
 import { PostsService } from '../posts.service';
@@ -17,8 +18,9 @@ export class PostDetailComponent implements OnInit, OnDestroy {
   userLogin: boolean;
   id: string;
   sub: Subscription;
-  userData: object;
+  userData: UserData;
   defaultPostImage = '../../../assets/defaultPostImage.jpg';
+  defaultAvatarImage = '../../../assets/avatar-pengin.png';
 
   constructor(
     private store: PostsStoreService,
@@ -30,6 +32,8 @@ export class PostDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.userLogin = this.userStore.isLogin();
+    this.userData = this.userStore.getUserData().userData;
+
     this.activatedRoute.params.subscribe((params) => {
       this.id = params.id;
     });

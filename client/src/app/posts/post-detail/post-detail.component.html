@@ -1,36 +1,59 @@
-<p>post-detail works!</p>
-<div class="post__container" *ngIf="postInfo, else noPost">
-  <div class="post__content">
+<mat-card class="post__container">
+  <div *ngIf="postInfo, else noPost">
     <img class="post__image" [src]="postInfo.image || defaultPostImage" [alt]="postInfo.title">
-    <h2>{{ postInfo.title }}</h2>
-    <h3 class="username">{{ postInfo.userInfo.username }}</h3>
+    <div class="post__content">
+      <mat-card-title class="post__title">{{ postInfo.title }}</mat-card-title>
 
-    <p class="date">{{ postInfo.date | date }}</p>
-    <p>{{ postInfo.content }}</p>
+      <div class="user__info">
+        <img mat-card-avatar [src]="userData.image || defaultAvatarImage">
+        <div class="info-text">
+          <mat-card-subtitle class="username">{{ postInfo.userInfo.username }}</mat-card-subtitle>
+          <p class="date">{{ postInfo.date | date }}</p>
+        </div>
+      </div>
+
+      <p>{{ postInfo.content }}</p>
+    </div>
   </div>
 
+  <div class="btn__container" *ngIf="userLogin; else noLogin">
+    <div *ngIf="(userData.role === 'admin') || userData._id === postInfo?.userID">
+      <button class="btn" mat-raised-button color="primary" (click)="onDelete(postInfo._id)">Delete Post</button>
+      <button class="btn" mat-raised-button color="primary" (click)="onNavigate('newpost/', postInfo._id)">Update
+        Post</button>
+    </div>
+  </div>
+
+  <ng-template class="noLogin" #noLogin>
+    To update or delete post, please Login first
+    <a class="nav__link" [routerLink]="['/login']">here >></a>
+  </ng-template>
+
+  <ng-template #noPost>Post not found. Create a new post
+    <a [routerLink]="['/newpost']">here >></a>
+  </ng-template>
+</mat-card>
+
+<mat-card class="comments__container" *ngIf="postInfo">
+  <h3 class="comment__title">Comments</h3>
   <ol class="comment-list">
-    <li class="comment-list__item" *ngFor="let comment of postInfo.comments" id="comment._id">
-      <div class="comment__container">
-        <h3 class="username">{{ comment.userInfo.username }}</h3>
-        <p class="date">{{ comment.date | date }}</p>
-        <p>{{ comment.content }}</p>
+    <li class="comment-list__item comment__container" *ngFor="let comment of postInfo.comments" id="comment._id">
+      <div class="user__info">
+        <img mat-card-avatar [src]="comment.userInfo.image || defaultAvatarImage">
+        <div class="info-text">
+          <mat-card-subtitle class="username">{{ comment.userInfo.username }}</mat-card-subtitle>
+          <p class="date">{{ comment.date | date }}</p>
+        </div>
+      </div>
+
+      <p>{{ comment.content }}</p>
+
+      <div class="btn__container" *ngIf="userLogin; else noLogin">
+        <div *ngIf="(userData.role === 'admin') || userData._id === comment.userID">
+          <button class="btn" mat-button color="accent">Delete</button>
+          <button class="btn" mat-button color="accent">Update</button>
+        </div>
       </div>
     </li>
   </ol>
-
-  <div *ngIf="userLogin; else noLogin">
-    <button (click)="onDelete(postInfo._id)">Delete Post</button>
-    <button (click)="onNavigate('newpost/', postInfo._id)">Update Post</button>
-  </div>
-</div>
-<ng-template #noPost>Post not found. Create a new post
-  <a [routerLink]="['/newpost']">here >></a>
-</ng-template>
-
-
-
-<ng-template class="noLogin" #noLogin>
-  To update or delete post, please Login first
-  <a class="nav__link" [routerLink]="['/login']">here >></a>
-</ng-template>
+</mat-card>

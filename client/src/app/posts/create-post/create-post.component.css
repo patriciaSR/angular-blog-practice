@@ -1,3 +1,7 @@
+.mat-card.post__container {
+  max-width: 800px;
+  margin: 20px auto;
+}
 label {
   display: block;
 }
