@@ -11,8 +11,11 @@ export class AuthInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Obtenemos el token
+    let token;
     const userData = JSON.parse(sessionStorage.getItem('userData'));
-    const token = userData.token;
+    if (userData) {
+      token = userData.token;
+    }
     // Importante: modificamos de forma inmutable, haciendo el clonado de la petición
     if (req.url.search('/login') === -1) {
       req = req.clone(
