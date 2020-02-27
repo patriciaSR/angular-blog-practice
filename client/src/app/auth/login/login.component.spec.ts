@@ -35,9 +35,31 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should set form property', () => {
+  it('should set form properties', () => {
     component.ngOnInit();
+
     expect(component.form).toBeDefined();
+    expect(component.form.contains('username')).toBeTruthy();
+    expect(component.form.contains('password')).toBeTruthy();
+  });
+
+  it ('should required username', () => {
+    const username = component.form.get('username');
+    username.setValue('');
+    expect(username.valid).toBeFalsy();
+
+    username.setValue('asdasd');
+    expect(username.valid).toBeTruthy();
+  });
+
+  it ('should required password', () => {
+    const password = component.form.get('password');
+    password.setValue('');
+    expect(password.valid).toBeFalsy();
+
+    password.setValue('aaaaaaaa');
+    expect(password.valid).toBeTruthy();
+
   });
 
   it('should call getToken service', () => {

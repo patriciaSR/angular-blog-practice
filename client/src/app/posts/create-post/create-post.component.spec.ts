@@ -53,7 +53,10 @@ describe('CreatePostComponent', () => {
 
   it('should set form', () => {
     component.ngOnInit();
+
     expect(component.form).toBeDefined();
+    expect(component.form.contains('title')).toBeTruthy();
+    expect(component.form.contains('content')).toBeTruthy();
   });
 
   it('should call getPostById() method() when postID is defined ', () => {
