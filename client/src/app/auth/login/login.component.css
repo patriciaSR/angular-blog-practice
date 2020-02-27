@@ -16,3 +16,7 @@ input.ng-untouched {
 .errorText p {
   padding: 10px;
 }
+.form__container {
+  max-width: 400px;
+  margin: 0 auto;
+}

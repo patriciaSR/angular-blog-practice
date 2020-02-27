@@ -1,28 +1,33 @@
 <p>login works!</p>
 
-<form [formGroup]="form">
-  <label for="username">
-    Username:
-    <input name="username" type="text" formControlName="username">
-  </label>
+<mat-card class="form__container">
+  <form [formGroup]="form">
 
-  <div class="errorText" *ngIf="form.get('username').dirty && !form.get('username').valid">
-    <p *ngIf="form.get('username').hasError('required')">Debes poner un nombre</p>
-  </div>
+    <label for="username">
+      Username:
+      <input name="username" type="text" formControlName="username">
+    </label>
 
-  <label for="password">
-    Password:
-    <input name="password" type="password" formControlName="password">
-  </label>
+    <div class="errorText" *ngIf="form.get('username').dirty && !form.get('username').valid">
+      <p *ngIf="form.get('username').hasError('required')">Debes poner un nombre</p>
+    </div>
 
-  <div class="errorText" *ngIf="form.get('password').dirty && !form.get('password').valid">
-    <p *ngIf="form.get('password').hasError('required')">Debes poner una contraseña</p>
-  </div>
+    <label for="password">
+      Password:
+      <input name="password" type="password" formControlName="password">
+    </label>
 
-  <button (click)="onSubmit($event)" [disabled]="!form.valid">Send</button>
+    <div class="errorText" *ngIf="form.get('password').dirty && !form.get('password').valid">
+      <p *ngIf="form.get('password').hasError('required')">Debes poner una contraseña</p>
+    </div>
 
-  <div class="errorText" *ngIf="errorText">
-  <p>{{ errorText }}</p>
-  </div>
+    <button (click)="onSubmit($event)" [disabled]="!form.valid">Send</button>
 
-</form>
+    <div class="errorText" *ngIf="errorText">
+    <p>{{ errorText }}</p>
+    </div>
+
+  </form>
+</mat-card>
+
+
