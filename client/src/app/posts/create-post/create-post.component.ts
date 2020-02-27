@@ -38,7 +38,7 @@ export class CreatePostComponent implements OnInit {
         (response) => {
           this.form.get('title').setValue(response.title);
           this.form.get('content').setValue(response.content);
-          this.form.get('image').setValue(response.image);
+          this.form.value.image = response.image;
         },
         (error) => console.log(error)
       );
@@ -61,7 +61,6 @@ export class CreatePostComponent implements OnInit {
 
   handleUploadImage(ev) {
     const file = ev.target.files[0];
-    console.log(file);
     if (!file) { return; }
 
     this.form.get('imageName').setValue('hola');

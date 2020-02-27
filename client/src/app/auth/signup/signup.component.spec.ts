@@ -76,8 +76,13 @@ describe('SignupComponent', () => {
 
   it ('should required password', () => {
     const password = component.form.get('password');
+    // const password = component.form.controls.password;
+
     password.setValue('');
     expect(password.valid).toBeFalsy();
+
+    const errors = password.errors;
+    expect(errors.required).toBeTruthy();
 
     password.setValue('asd');
     expect(password.valid).toBeFalsy();
